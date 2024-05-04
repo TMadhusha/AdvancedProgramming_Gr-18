@@ -41,3 +41,46 @@
 .icon, .link_text{
     font-size: 20px;
 }
+
+
+/* Home */
+.home-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .image-section {
+    flex: 1;
+  }
+  
+  .text-section {
+    flex: 1;
+    padding: 10px 20px;
+  }
+  
+  .rounded-image {
+    width: 100%;
+    height: 85vh; /* Half the height of the image */
+    background-color: #ccc;
+    border-radius: 0 100px 100px 0;
+    
+  }
+  
+  .rounded-text {
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .rounded-image1{
+    width: 90%;
+    height: 60vh; /* Half the height of the image */
+    background-color: #ccc;
+    border-radius: 100px 0 0 100px;
+    margin: 10px 10px 40px 60px;
+  }
+
+
+/* Home */
