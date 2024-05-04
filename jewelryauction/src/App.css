@@ -1,0 +1,11 @@
+.main-container {
+  background-color: #333; /* Background color of the navigation bar */
+  color: #fff; /* Text color of the navigation bar */
+  padding: 10px 0; /* Padding for top and bottom */
+}
+
+.navbar {
+  width: 100%; /* Full width */
+  text-align: center; /* Center align the text */
+  font-size: 20px; /* Font size of the text */
+}
