@@ -1,0 +1,43 @@
+*{
+    margin:0;
+    padding:0;
+    text-decoration: none;
+}
+.container{
+    display:flex;
+}
+
+.sidebar{
+    background: #edcc85;
+    color: #fff;
+    width: 100%;
+    transition: all 0.5s;
+}
+.top_section{
+    display: flex;
+    align-items:center;
+    padding:20px 15px;
+}
+.logo{
+    font-size: 30px;
+}
+
+.link{
+    display: flex;
+    color: #fff;
+    padding: 10px 15px;
+    gap: 15px;
+    transition: all 0.5s;
+}
+.link:hover{
+    background:white;
+    color: #e3ba62;
+    transition: all 0.5s;
+}
+.active{
+    background:     #edcc85;
+    color: white;
+}
+.icon, .link_text{
+    font-size: 20px;
+}
