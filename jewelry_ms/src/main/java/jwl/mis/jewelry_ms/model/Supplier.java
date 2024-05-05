@@ -3,6 +3,7 @@ package jwl.mis.jewelry_ms.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
@@ -13,8 +14,8 @@ import lombok.Data;
 public class Supplier {
 
     @Id
-    @GeneratedValue
-    private Long sup_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long seller_id;
     private String supname;
     private String address;
     private String itemid;
