@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f7cc07e-3112-4db2-a723-0698ebebcab7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/Models/SellerLoginRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/exception/SellerNotFoundAdvaice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/exception/SellerNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/repository/SellerRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/controller/SupplierController.java" beforeDir="false" afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/controller/SellerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/repository/SellerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/repository/SellerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/controller/SellerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/controller/SellerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +130,7 @@
       <workItem from="1714884365257" duration="379000" />
       <workItem from="1714884955690" duration="559000" />
       <workItem from="1714885533850" duration="55000" />
-      <workItem from="1714885631720" duration="3921000" />
+      <workItem from="1714885631720" duration="5863000" />
     </task>
     <servers />
   </component>

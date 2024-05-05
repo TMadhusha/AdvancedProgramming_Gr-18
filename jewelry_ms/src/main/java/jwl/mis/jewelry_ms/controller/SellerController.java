@@ -33,15 +33,16 @@ public class SellerController {
 Seller newSupplier(@RequestBody Seller newSeller) {
     // Check if the email already exists
     Seller existingSeller = sellerRepository.findSellerByEmail(newSeller.getEmail());
-    String email=existingSeller.getEmail();
     if (existingSeller != null) {
-        throw new SellerNotFoundException(email+" is already in use.");
+        String email = existingSeller.getEmail();
+        throw new SellerNotFoundException(email + " is already in use.");
     }
 
     // If the email doesn't exist, save the new seller
     System.out.println(newSeller);
     return sellerRepository.save(newSeller);
 }
+
 
 
 
