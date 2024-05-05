@@ -46,6 +46,13 @@ public class ProductController {
         }
     }
 
+    @GetMapping("/get-product")
+    List<Product>getAllProduct(){
+        return productRepository.findAll();
+    }
+
+
+
 
 
 

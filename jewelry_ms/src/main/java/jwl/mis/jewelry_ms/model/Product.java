@@ -20,7 +20,10 @@ public class Product {
     private String description;
     private Long stock;
     private Date date;
+    //private Long seller_id;
+    @Column(name = "seller_id")
     private Long seller_id;
+
 
 
 
