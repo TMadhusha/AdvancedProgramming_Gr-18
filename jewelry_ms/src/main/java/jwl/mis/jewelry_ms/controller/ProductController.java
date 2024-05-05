@@ -51,6 +51,16 @@ public class ProductController {
         return productRepository.findAll();
     }
 
+    //show in seller side seyyonum
+
+
+//load Supplier
+
+    @GetMapping("/load/{product_id}") //for lodesupplier
+    Product getProductById(@PathVariable("product_id") Long product_id){
+        return productRepository.findById(product_id)
+                .orElseThrow(()->new UserNotFoundException(product_id));
+    }
 
 
 
@@ -80,12 +90,6 @@ public class ProductController {
 
 
 
-//
-//    @GetMapping("/update/{seller_id}") //for lodesupplier
-//Seller getSellerById(@PathVariable("seller_id") Long seller_id){
-//    return sellerRepository.findById(seller_id)
-//            .orElseThrow(()->new UserNotFoundException(seller_id));
-//}
 //
 //
 //    @PutMapping("/get-seller/{seller_id}")
