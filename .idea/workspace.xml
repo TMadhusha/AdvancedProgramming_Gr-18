@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f7cc07e-3112-4db2-a723-0698ebebcab7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/model/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/model/Supplier.java" afterDir="false" />
-    </list>
+    <list default="true" id="7f7cc07e-3112-4db2-a723-0698ebebcab7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -119,7 +117,7 @@
       <workItem from="1714833319863" duration="117000" />
       <workItem from="1714833452531" duration="3097000" />
       <workItem from="1714884365257" duration="379000" />
-      <workItem from="1714884955690" duration="535000" />
+      <workItem from="1714884955690" duration="559000" />
     </task>
     <servers />
   </component>
