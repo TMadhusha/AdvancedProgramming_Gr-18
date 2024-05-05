@@ -21,8 +21,8 @@ const Sidebar = ({children}) => {
             
         },
         {
-            path:"/customer",
-            name:"Customer",
+            path:"/bidding-page",
+            name:"Bid",
             
             
         }
