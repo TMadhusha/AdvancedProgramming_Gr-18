@@ -55,11 +55,28 @@ public class ProductController {
 
 
 //load Supplier
-
     @GetMapping("/load/{product_id}") //for lodesupplier
     Product getProductById(@PathVariable("product_id") Long product_id){
         return productRepository.findById(product_id)
                 .orElseThrow(()->new UserNotFoundException(product_id));
+    }
+
+
+    //for update
+    @PutMapping("/update-product/{product_id}")
+    Product updateProduct(@RequestBody Product newProduct, @PathVariable Long product_id){
+
+
+        return productRepository.findById(product_id)
+                .map(product->{
+                    product.setProductname(newProduct.getProductname());
+                    product.setDate(newProduct.getDate());
+                    product.setStartingprice(newProduct.getStartingprice());
+                    product.setDescription(newProduct.getDescription());
+                    product.setStock(newProduct.getStock());
+                    product.setSeller_id(newProduct.getSeller_id());
+                    return productRepository.save(product);
+                }).orElseThrow(()->new UserNotFoundException(product_id));
     }
 
 
