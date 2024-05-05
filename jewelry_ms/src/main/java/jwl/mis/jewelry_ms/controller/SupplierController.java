@@ -2,16 +2,13 @@ package jwl.mis.jewelry_ms.controller;
 
 
 
-import jwl.mis.jewelry_ms.exception.EmployeeNotFoundException;
 import jwl.mis.jewelry_ms.exception.UserNotFoundException;
-import jwl.mis.jewelry_ms.model.Employee;
-import jwl.mis.jewelry_ms.model.Supplier;
-import jwl.mis.jewelry_ms.repository.SupplierRepository;
+import jwl.mis.jewelry_ms.model.Seller;
+import jwl.mis.jewelry_ms.repository.SellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -19,75 +16,52 @@ import java.util.Optional;
 public class SupplierController {
 
     @Autowired
-    private SupplierRepository supplierRepository;
+    private SellerRepository sellerRepository;
 
-    @PostMapping("/save-supplier")
-    Supplier newSupplier(@RequestBody Supplier newSupplier){
-        System.out.println(newSupplier);
-        return supplierRepository.save(newSupplier);
+    @PostMapping("/save-seller")
+    Seller newSupplier(@RequestBody Seller newSeller){
+        System.out.println(newSeller);
+        return sellerRepository.save(newSeller);
     }
-    @GetMapping("/get-supplier")
-    List<Supplier>getAllSupplier(){
-        return supplierRepository.findAll();
+    @GetMapping("/get-seller")
+    List<Seller>getAllSeller(){
+        return sellerRepository.findAll();
     }
 
-//    @GetMapping("/PSupplier/{sup_id}")
-//    Supplier getSuppliyerByName(@PathVariable Long sup_id) {
-//        return supplierRepository.findById(sup_id)
-//               .orElseThrow(()->new UserNotFoundException(sup_id));
-//    }
-@GetMapping("/update/{sup_id}") //for lodesupplier
-Supplier getSupplierById(@PathVariable("sup_id") Long sup_id){
-    return supplierRepository.findById(sup_id)
-            .orElseThrow(()->new UserNotFoundException(sup_id));
+@GetMapping("/update/{seller_id}") //for lodesupplier
+Seller getSellerById(@PathVariable("seller_id") Long seller_id){
+    return sellerRepository.findById(seller_id)
+            .orElseThrow(()->new UserNotFoundException(seller_id));
 }
 
 
-    @PutMapping("/get-supplier/{sup_id}")
-    Supplier updateSupplier(@RequestBody Supplier newSupplier,@PathVariable Long sup_id){
+    @PutMapping("/get-seller/{seller_id}")
+    Seller updateSeller(@RequestBody Seller newSeller, @PathVariable Long seller_id){
 
 
-        return supplierRepository.findById(sup_id)
-                .map(supplier->{
-                    supplier.setSupname(newSupplier.getSupname());
-                    supplier.setItemid(newSupplier.getItemid());
-                    supplier.setPhonenumber(newSupplier.getPhonenumber());
-                    supplier.setQuantity(newSupplier.getQuantity());
-                    supplier.setEmail(newSupplier.getEmail());
-                    return supplierRepository.save(supplier);
-                }).orElseThrow(()->new UserNotFoundException(sup_id));
+        return sellerRepository.findById(seller_id)
+                .map(seller->{
+                    seller.setFirstname(newSeller.getFirstname());
+                    seller.setLastname(newSeller.getLastname());
+                    seller.setPhonenumber(newSeller.getPhonenumber());
+                    seller.setEmail(newSeller.getEmail());
+                    seller.setPassword(newSeller.getPassword());
+                    seller.setAddress(newSeller.getAddress());
+                    seller.setDob(newSeller.getDob());
+                    return sellerRepository.save(seller);
+                }).orElseThrow(()->new UserNotFoundException(seller_id));
     }
 
 
 
-//    @PutMapping("/test/{id}")
-//    void demofunction(@PathVariable Long id){
-//        System.out.println("success call");
-//        System.out.println("id : "+ id);
-////        System.out.println("dto value : "+ dto.getSuppName());
-//    }
-//    @PutMapping("/save-supplier/{sup_id}")
-//    Supplier test(@RequestBody Supplier newSupplier,@PathVariable("sup_id") Long sup_id){
-//        //System.out.println(newSupplier);
-//        return null;
-//    }
 
-//    @DeleteMapping("/delete-supplier/{sup_id}")
-//    String deletesup(@PathVariable("sup_id") Long sup_id ){
-//        if(!supplierRepository.existsById(sup_id)){
-//            throw new UserNotFoundException(sup_id);
-//        }
-//        supplierRepository.deleteById(sup_id);
-//        return sup_id+" "+" was deleted";
-//    }
-
-    @DeleteMapping("/supplier/{sup_id}")
-    String deletesup(@PathVariable Long sup_id){
-        if(!supplierRepository.existsById(sup_id)){
+    @DeleteMapping("/supplier/{seller_id}")
+    String deletesup(@PathVariable Long seller_id){
+        if(!sellerRepository.existsById(seller_id)){
 //            throw new UserNotFoundException(sup_id);
             return "User Not Found";
-        }else supplierRepository.deleteById(sup_id);
-        return sup_id+" "+" was deleted";
+        }else sellerRepository.deleteById(seller_id);
+        return seller_id+" "+" was deleted";
     }
 
 

@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 //@NoArgsConstructor
 //@AllArgsConstructor
-public class Supplier {
+public class Seller {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
