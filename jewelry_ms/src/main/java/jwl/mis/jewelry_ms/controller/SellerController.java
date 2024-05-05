@@ -113,11 +113,17 @@ public class SellerController {
         return sellerRepository.findAll();
     }
 
+//    @GetMapping("/update/{session_id}")
+//        //for lodeseller
+//    SellerSession getSellerById(@PathVariable("session_id") Long session_id) {
+//        return sellerSessionRepository.findById(session_id)
+//                .orElseThrow(() -> new UserNotFoundException(session_id));
+//    }
+
     @GetMapping("/update/{session_id}")
-        //for lodeseller
-    SellerSession getSellerById(@PathVariable("session_id") Long session_id) {
-        return sellerSessionRepository.findById(session_id)
-                .orElseThrow(() -> new UserNotFoundException(session_id));
+    public SellerSession getSellerById(@PathVariable("session_id") Long sessionId) {
+        return sellerSessionRepository.findById(sessionId)
+                .orElseThrow(() -> new UserNotFoundException(sessionId));
     }
 
 // seyyonum
