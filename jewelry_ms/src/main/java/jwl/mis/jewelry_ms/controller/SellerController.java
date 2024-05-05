@@ -2,10 +2,16 @@ package jwl.mis.jewelry_ms.controller;
 
 
 
+import jwl.mis.jewelry_ms.Models.AdminLoginRequest;
+import jwl.mis.jewelry_ms.Models.SellerLoginRequest;
+import jwl.mis.jewelry_ms.exception.SellerNotFoundException;
 import jwl.mis.jewelry_ms.exception.UserNotFoundException;
+import jwl.mis.jewelry_ms.model.Admin;
 import jwl.mis.jewelry_ms.model.Seller;
 import jwl.mis.jewelry_ms.repository.SellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,16 +19,67 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 //@RequestMapping("/api/supplier")
-public class SupplierController {
+public class SellerController {
 
     @Autowired
     private SellerRepository sellerRepository;
 
-    @PostMapping("/save-seller")
-    Seller newSupplier(@RequestBody Seller newSeller){
-        System.out.println(newSeller);
-        return sellerRepository.save(newSeller);
+//    @PostMapping("/register-seller")
+//    Seller newSupplier(@RequestBody Seller newSeller){
+//        System.out.println(newSeller);
+//        return sellerRepository.save(newSeller);
+//    }
+@PostMapping("/register-seller")
+Seller newSupplier(@RequestBody Seller newSeller) {
+    // Check if the email already exists
+    Seller existingSeller = sellerRepository.findSellerByEmail(newSeller.getEmail());
+    String email=existingSeller.getEmail();
+    if (existingSeller != null) {
+        throw new SellerNotFoundException(email+" is already in use.");
     }
+
+    // If the email doesn't exist, save the new seller
+    System.out.println(newSeller);
+    return sellerRepository.save(newSeller);
+}
+
+
+
+    @PostMapping("/seller-login")
+    public ResponseEntity<String> login(@RequestBody SellerLoginRequest loginRequest) {
+        String email = loginRequest.getEmail();
+        String password = loginRequest.getPassword();
+
+        // Find the admin by username
+        Seller seller = sellerRepository.findSellerByEmail(email);
+
+        if (seller == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
+        } else {
+            if (seller.getPassword().equals(password)) {
+                return ResponseEntity.ok("Login successful");
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid E-mail or password");
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @GetMapping("/get-seller")
     List<Seller>getAllSeller(){
         return sellerRepository.findAll();
