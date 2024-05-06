@@ -101,23 +101,28 @@ public class SellerController {
 
 
 
-    @PutMapping("/update-seller-session/{session_id}")
-    public ResponseEntity<SellerSession> updateSellerSession(@RequestBody SellerSession newSellerSession, @PathVariable Long session_id) {
-        return sellerSessionRepository.findById(session_id)
-                .map(sellerSession -> {
-                    sellerSession.setFirstname(newSellerSession.getFirstname());
-                    sellerSession.setLastname(newSellerSession.getLastname());
-                    sellerSession.setPhonenumber(newSellerSession.getPhonenumber());
-                    sellerSession.setEmail(newSellerSession.getEmail());
-                    sellerSession.setPassword(newSellerSession.getPassword());
-                    sellerSession.setAddress(newSellerSession.getAddress());
-                    sellerSession.setDob(newSellerSession.getDob());
+    @PutMapping("/change-password")
+    public ResponseEntity<?> updateSellerSession(@RequestBody SellerSession newSellerSession) {
+        String email = newSellerSession.getEmail();
+        String newPassword = newSellerSession.getPassword();
 
-                    SellerSession updatedSellerSession = sellerSessionRepository.save(sellerSession);
-                    return ResponseEntity.ok(updatedSellerSession);
-                })
-                .orElse(ResponseEntity.notFound().build());
-    }    //ok
+        // Check if email exists in the SellerSession table
+        Optional<SellerSession> existingSellerSession = Optional.ofNullable(sellerSessionRepository.findSellersessionByEmail(email));
+        if(existingSellerSession.isPresent()) {
+            SellerSession sellerSession = existingSellerSession.get();
+
+            // Update the password
+            sellerSession.setPassword(newPassword);
+            sellerSessionRepository.save(sellerSession);
+
+            return ResponseEntity.ok().build(); // Password updated successfully
+        } else {
+            // Email doesn't exist, return an error response
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email is invalid"); // You can customize the error message as needed
+        }
+    }
+
+
     @PostMapping("/seller-logout")
     public ResponseEntity<String> logout() {
         // Get all seller session data

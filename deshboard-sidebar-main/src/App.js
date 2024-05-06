@@ -8,7 +8,7 @@ import Home from './pages/Home.jsx';
 import Seller from './pages/Seller.jsx';
 import SellerRegister from './loginAndReg/SellerRegister.jsx';
 import LoginSeller from './loginAndReg/LoginSeller.jsx';
-import EditSeller from '../src/Seller/EditSeller.jsx'
+import UpdatePassword from '../src/Seller/UpdatePassword.jsx'
 import Logout from '../src/Seller/Logout.jsx'
 
 const App = () => {
@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/product" element={<Product />} />
           <Route path="/register-seller" element={<SellerRegister />} />
           <Route path="/register-login" element={<LoginSeller />} />
-          <Route path="/edit-seller" element={<EditSeller />} />
+          <Route path="/password-change" element={<UpdatePassword/>} />
           <Route path="/logout" element={<Logout />} />
           
         </Routes>
