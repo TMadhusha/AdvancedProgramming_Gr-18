@@ -203,11 +203,11 @@ return(
         </div>
         
     </form>
-    {/* <div className="text-center fs-6">
-                <Link to="/login">
+    <div className="text-center fs-6">
+                <Link to="/register-login">
                     Sign-in
                 </Link>
-    </div> */}
+    </div>
    
 </div>
 

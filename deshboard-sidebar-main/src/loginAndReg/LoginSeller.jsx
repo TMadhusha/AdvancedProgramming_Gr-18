@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import Sidebar from '../components/Sidebar';
+import SidebarSeller from './SidebarSeller';
 
 
 export default function LoginSeller() {
@@ -35,7 +36,7 @@ export default function LoginSeller() {
 
       if (response.status === 200) {
         alert("Login Successfull"); // Display response message
-        navigate("/"); // Navigate to dashboard upon successful login
+        navigate("/edit-seller"); // Navigate to dashboard upon successful login
       }}
       catch (error) {
         alert("Login failed: " + error.response.data); // Display error message

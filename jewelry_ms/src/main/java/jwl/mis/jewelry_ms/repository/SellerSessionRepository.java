@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SellerSessionRepository extends JpaRepository<SellerSession,Long> {
 
-
+    SellerSession findSellersessionByEmail(String email);
 
 }

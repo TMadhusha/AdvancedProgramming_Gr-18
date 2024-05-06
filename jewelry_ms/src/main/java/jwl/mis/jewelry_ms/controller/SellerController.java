@@ -20,6 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
 import java.util.UUID;
 import java.util.List;
 
@@ -31,6 +33,9 @@ public class SellerController {
 
     @Autowired
     private SellerRepository sellerRepository;
+
+    @Autowired
+    private SellerSessionRepository sellerSessionRepository;
 
 
     @PostMapping("/register-seller")
@@ -46,15 +51,6 @@ public class SellerController {
         System.out.println(newSeller);
         return sellerRepository.save(newSeller);
     }
-
-
-
-
-
-
-
-    @Autowired
-    private SellerSessionRepository sellerSessionRepository;
 
     @PostMapping("/seller-login")
     public ResponseEntity<String> login(@RequestBody SellerLoginRequest loginRequest) {
@@ -89,14 +85,15 @@ public class SellerController {
         }
     }
 
+    //view all sellers
     @GetMapping("/get-seller")
     List<Seller>getAllSeller(){
         return sellerRepository.findAll();
     }
 
 
-
-    @GetMapping("/update/{session_id}")
+//loadseller
+    @GetMapping("/load")
     public SellerSession getSellerById(@PathVariable("session_id") Long sessionId) {
         return sellerSessionRepository.findById(sessionId)
                 .orElseThrow(() -> new UserNotFoundException(sessionId));
@@ -120,33 +117,61 @@ public class SellerController {
                     return ResponseEntity.ok(updatedSellerSession);
                 })
                 .orElse(ResponseEntity.notFound().build());
-    }
-
-        @Transactional
-        @DeleteMapping("/seller/{seller_id}")
-        public String deleteSeller(@PathVariable ("seller_id") Long seller_id) {
-            if (!sellerRepository.existsById(seller_id)) {
-                return "User Not Found";
-            }
-                // Delete from Seller table
-                sellerRepository.deleteById(seller_id);
-
-                // Delete from SellerSession table
-                sellerSessionRepository.deleteById(seller_id);
-
-                return seller_id + " was deleted";
-
-
-        }
-
-
+    }    //ok
     @PostMapping("/seller-logout")
     public ResponseEntity<String> logout() {
+        // Get all seller session data
+        List<SellerSession> sellerSessions = sellerSessionRepository.findAll();
+
+        // Iterate over each seller session
+        for (SellerSession session : sellerSessions) {
+            // Find the corresponding seller in the seller table
+            Optional<Seller> optionalSeller = sellerRepository.findById(session.getSeller_id());
+
+            // If seller exists, update its attributes
+            if (optionalSeller.isPresent()) {
+                Seller seller = optionalSeller.get();
+                // Update seller attributes as needed
+                // For example:
+                seller.setSeller_id(session.getSeller_id());
+                seller.setFirstname(session.getFirstname());
+                seller.setLastname(session.getLastname());
+                seller.setPhonenumber(session.getPhonenumber());
+                seller.setEmail(session.getEmail());
+                seller.setDob(session.getDob());
+                seller.setPassword(session.getPassword());
+                seller.setAddress(session.getAddress());
+
+                // seller.set...
+
+                // Save the updated seller data
+                sellerRepository.save(seller);
+            } else {
+                // If seller does not exist, create a new seller
+                Seller seller = new Seller();
+                // Set seller attributes based on seller session data
+                // For example:
+                seller.setSeller_id(session.getSeller_id());
+                seller.setFirstname(session.getFirstname());
+                seller.setLastname(session.getLastname());
+                seller.setPhonenumber(session.getPhonenumber());
+                seller.setEmail(session.getEmail());
+                seller.setDob(session.getDob());
+                seller.setPassword(session.getPassword());
+                seller.setAddress(session.getAddress());
+
+                // Save the new seller data
+                sellerRepository.save(seller);
+            }
+        }
+
         // Delete all seller session data
         sellerSessionRepository.deleteAll();
 
         return ResponseEntity.ok("Logout successful");
     }
+
+
 
 
 
