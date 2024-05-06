@@ -47,25 +47,33 @@ export default function SellerRegister() {
 
   }
 
-  const onSubmit =async (e)=>{
-      e.preventDefault()
-      const namePattern = /^[a-zA-Z_]+$/;
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const namePattern = /^[a-zA-Z_]+$/;
+  
     if (!namePattern.test(firstname)) {
-      alert("First-name can only contain letters and underscores.");}
-      if (!namePattern.test(lastname)) {
-        alert("Last-name can only contain letters and underscores.");}
-        if(password!==conpassword){
-            alert("Passwords Are Not Match try again...")
+      alert("First-name can only contain letters and underscores.");
+    } else if (!namePattern.test(lastname)) {
+      alert("Last-name can only contain letters and underscores.");
+    } else if (password !== conpassword) {
+      alert("Passwords Are Not Match try again...");
+    } else {
+      try {
+        await axios.post("http://localhost:8090/register-seller", sellerReg);
+        alert("Registration Completed...");
+        // navigate("/login")
+        handleCancel();
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          alert(error.response.data.errorMessage);
+        } else {
+          console.error("An error occurred:", error);
+          alert("An error occurred while registering. Please try again later.");
         }
-      
-       else {
-      await axios.post("http://localhost:8090/register-seller",sellerReg)
-      alert("Registration Completed...")
-      // navigate("/login")
-      handleCancel();
+      }
     }
-      
-  }
+  };
+  
  
 return(
     
@@ -116,6 +124,7 @@ return(
             placeholder="phone Number"
             value={phonenumber}
             required
+            maxLength={10}
             onChange={(e)=>onInputChange(e)}/>
         </div>
 
@@ -168,6 +177,7 @@ return(
             value={password}
             minLength={8}
             required
+            
             onChange={(e)=>onInputChange(e)}/>
         </div>
 
