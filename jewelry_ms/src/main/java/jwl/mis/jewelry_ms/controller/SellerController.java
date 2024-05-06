@@ -140,6 +140,15 @@ public class SellerController {
         }
 
 
+    @PostMapping("/seller-logout")
+    public ResponseEntity<String> logout() {
+        // Delete all seller session data
+        sellerSessionRepository.deleteAll();
+
+        return ResponseEntity.ok("Logout successful");
+    }
+
+
 
 }
 
