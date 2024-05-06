@@ -15,7 +15,7 @@ const Sidebar = ({children}) => {
             
         },
         {
-            path:"/seller",
+            path:"/register-login",
             name:"Seller",
             
             
