@@ -5,44 +5,50 @@ import jakarta.persistence.*;
 @Entity
 public class Inventory {
     @Id
-    private String item_id;
-    private String itemName;
-    private String type;
-    private Double actualPrice;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long inventory_id;
+
+    private String product_name;
     private String description;
-    private Double sellingPrice;
-    private int availableStock;
+    private String author;
+    private double startingPrice;
 
-    public String getItem_id() {
-        return item_id;
+    @Lob
+    @Column(columnDefinition = "LONGBLOB")
+    private byte[] image;
+
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
+    private Seller seller;
+
+    public Inventory(Long inventory_id, String product_name, String description, String author, double startingPrice, byte[] image, Seller seller) {
+        this.inventory_id = inventory_id;
+        this.product_name = product_name;
+        this.description = description;
+        this.author = author;
+        this.startingPrice = startingPrice;
+        this.image = image;
+        this.seller = seller;
     }
 
-    public void setItem_id(String item_id) {
-        this.item_id = item_id;
+    public Inventory() {
+
     }
 
-    public String getItemName() {
-        return itemName;
+    public Long getInventory_id() {
+        return inventory_id;
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
+    public void setInventory_id(Long inventory_id) {
+        this.inventory_id = inventory_id;
     }
 
-    public String getType() {
-        return type;
+    public String getProduct_name() {
+        return product_name;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Double getActualPrice() {
-        return actualPrice;
-    }
-
-    public void setActualPrice(Double actualPrice) {
-        this.actualPrice = actualPrice;
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
     }
 
     public String getDescription() {
@@ -53,20 +59,35 @@ public class Inventory {
         this.description = description;
     }
 
-    public Double getSellingPrice() {
-        return sellingPrice;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setSellingPrice(Double sellingPrice) {
-        this.sellingPrice = sellingPrice;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public int getAvailableStock() {
-        return availableStock;
+    public double getStartingPrice() {
+        return startingPrice;
     }
 
-    public void setAvailableStock(int availableStock) {
-        this.availableStock = availableStock;
+    public void setStartingPrice(double startingPrice) {
+        this.startingPrice = startingPrice;
     }
 
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
+    }
 }
