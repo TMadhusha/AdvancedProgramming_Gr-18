@@ -17,7 +17,7 @@ const Product = () => {
  const {product_id}=useParams()
 
   const loadproduct=async()=>{
-    const result=await axios.get("http://localhost:8090/get-get-product");
+    const result=await axios.get("http://localhost:8090/get-product");
     setproduct(result.data);
   }
 
