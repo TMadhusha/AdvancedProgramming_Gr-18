@@ -17,12 +17,12 @@ public class Seller {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long seller_id;
     private String firstname;
-    private String lastname;
     private String phonenumber;
     private String email;
     private String password;
     private String address;
     private String dob;
+    private String role;
 
 
 

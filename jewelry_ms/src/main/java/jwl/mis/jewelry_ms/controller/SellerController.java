@@ -70,7 +70,7 @@ public class SellerController {
             SellerSession sellerSession = new SellerSession();
             sellerSession.setSeller_id(seller.getSeller_id());
             sellerSession.setFirstname(seller.getFirstname());
-            sellerSession.setLastname(seller.getLastname());
+            sellerSession.setRole(seller.getRole());
             sellerSession.setPhonenumber(seller.getPhonenumber());
             sellerSession.setAddress(seller.getAddress());
             sellerSession.setEmail(seller.getEmail());
@@ -140,7 +140,7 @@ public class SellerController {
                 // For example:
                 seller.setSeller_id(session.getSeller_id());
                 seller.setFirstname(session.getFirstname());
-                seller.setLastname(session.getLastname());
+                seller.setRole(session.getRole());
                 seller.setPhonenumber(session.getPhonenumber());
                 seller.setEmail(session.getEmail());
                 seller.setDob(session.getDob());
@@ -158,7 +158,7 @@ public class SellerController {
                 // For example:
                 seller.setSeller_id(session.getSeller_id());
                 seller.setFirstname(session.getFirstname());
-                seller.setLastname(session.getLastname());
+                seller.setRole(session.getRole());
                 seller.setPhonenumber(session.getPhonenumber());
                 seller.setEmail(session.getEmail());
                 seller.setDob(session.getDob());
