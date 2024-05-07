@@ -34,7 +34,6 @@ export default function Adminbar() {
                     name:"Seller",
                 }
             ]
-
         },
         {
             path:"/changePwd",
