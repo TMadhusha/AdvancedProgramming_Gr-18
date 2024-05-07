@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import Sidebar from '../components/Sidebar'
+import Adminbar from '../components/Adminbar'
 import axios from 'axios';
 
-export default function Product() {
-  const [inventory,setInventory]=useState([]);
+export default function ProductDetails() {
+    const [inventory,setInventory]=useState([]);
 
     useEffect(()=>{
         loadProduct();
@@ -13,14 +13,16 @@ export default function Product() {
         const result=await axios.get("http://localhost:8080/inventory");
         setInventory(result.data);
     }
+
   return (
     <div>
-        <div>
-            <Sidebar/>
-        </div>
+        <Adminbar/>
         <div>
             <div>
                 <h1>Product Details</h1>
+            </div>
+            <div>
+                <button>Add New Product</button>
             </div>
             <div>
             <table class="table">
@@ -32,7 +34,7 @@ export default function Product() {
       <th scope="col">Author</th>
       <th scope="col">Description</th>
       <th scope="col">Starting Price </th>
-      <th scope="col">Action</th>
+      <th scope="col" colSpan={'2'}>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -45,7 +47,8 @@ export default function Product() {
                 <td>{inventory.author}</td>
                 <td>{inventory.description}</td>
                 <td>{inventory.startingPrice}</td>
-                <td><button>BID</button></td>
+                <td><button>Update</button></td>
+                <td><button>Delete</button></td>
             </tr>
         ))
     }

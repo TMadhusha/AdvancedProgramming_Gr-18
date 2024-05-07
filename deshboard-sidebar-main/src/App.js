@@ -8,6 +8,9 @@ import Home from './pages/Home.jsx';
 import Seller from './pages/Seller.jsx';
 import Dashborard from './pages/Dashborard.jsx';
 import Bids from './pages/Bids.jsx';
+import CustomerDetails from './Admin/CustomerDetails.jsx';
+import SellerDetails from './Admin/SellerDetails.jsx';
+import ProductDetails from './Admin/ProductDetails.jsx';
 
 const App = () => {
   return (
@@ -20,6 +23,9 @@ const App = () => {
           <Route path="/product" element={<Product />} />
           <Route path='/dashborard' element={<Dashborard/>}/>
           <Route path='/bids' element={<Bids/>}/>
+          <Route path='/customerdetails' element={<CustomerDetails/>}/>
+          <Route path='/sellerdetails' element={<SellerDetails/>}/>
+          <Route path='/productdetails' element={<ProductDetails/>}/>
         </Routes>
     </BrowserRouter>
   );

@@ -22,19 +22,18 @@ export default function Adminbar() {
             name:"Add New",
             subItems:[
                 {
-                    path:'/customerDetail',
+                    path:'/customerdetails',
                     name:"Customer",
                 },
                 {
-                    path:'/sellerDetail',
+                    path:'/sellerdetails',
                     name:"Seller",
                 },
                 {
-                    path:'/productDetail',
-                    name:"Seller",
+                    path:'/productdetails',
+                    name:"Products",
                 }
             ]
-
         },
         {
             path:"/changePwd",
