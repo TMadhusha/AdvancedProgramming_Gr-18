@@ -6,6 +6,7 @@ import Product from './pages/Product.jsx';
 import Customer from './pages/Customer.jsx';
 import Home from './pages/Home.jsx';
 import Seller from './pages/Seller.jsx';
+import Dashborard from './pages/Dashborard.jsx';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/customer" element={<Customer />} />
           <Route path="/seller" element={<Seller />} />
           <Route path="/product" element={<Product />} />
+          <Route path='/dashborad' element={<Dashborard/>}/>
         </Routes>
     </BrowserRouter>
   );
