@@ -1,67 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 
-const Sidebar = ({ children }) => {
-    const [openSubItemIndex, setOpenSubItemIndex] = useState(null);
+export default function Adminbar() {
+    const [openSubItemIndex, setOpenSubItemIndex] =useState(null);
 
     const toggleSubMenu = (index) => {
         setOpenSubItemIndex(openSubItemIndex === index ? null : index);
     };
 
-    const menuItem = [
+    const menuItem=[
         {
-            path: "/",
-            name: "Home",
+            path:"/dashborard",
+            name:"Dashboard",
         },
         {
-            path: "/product",
-            name: "Product",
+            path:"/bids",
+            name:"Bids",
         },
         {
-            path: "/seller",
-            name: "Seller",
-        },
-        {
-            path: "/register",
-            name: "Register",
-            subItems: [
+            path:"/addNew",
+            name:"Add New",
+            subItems:[
                 {
-                    path: "/seller-register",
-                    name: "Seller"
+                    path:'/customerDetail',
+                    name:"Customer",
                 },
                 {
-                    path: "/customer-register",
-                    name: "Customer"
+                    path:'/sellerDetail',
+                    name:"Seller",
+                },
+                {
+                    path:'/productDetail',
+                    name:"Seller",
                 }
             ]
-        },
-        {
-            path: "/login",
-            name: "Log In",
-            subItems: [
-                {
-                    path: "/dashborard",
-                    name: "Admin"
-                },
-                {
-                    path: "/seller-login",
-                    name: "Seller"
-                },
-                {
-                    path: "/customer-login",
-                    name: "Customer"
-                }
-            ]
-        },
-    ];
 
-    return (
-        <div className="container">
-            <div className="sidebar">
-                <div className="top_section">
-                    <h1 className="logo">Jewelry Online Auction System</h1>
-                    <div className='container' style={{ gap: "20px", paddingLeft: "25%" }}>
-                        {menuItem.map((item, index) => (
+        },
+        {
+            path:"/changePwd",
+            name:"Change Password",
+        },
+        {
+            path:"/home",
+            name:"Logout"
+        }
+    ]
+  return (
+    <div className="container">
+           <div  className="sidebar">
+               <div className="top_section">
+                <h1>Admin</h1>
+                   <div className='container' style={{gap:"20px", paddingLeft:"32%"}}>
+                   {menuItem.map((item, index) => (
                             <div key={index}>
                                 {item.subItems ? (
                                     <div className="link" onClick={() => toggleSubMenu(index)}>
@@ -89,12 +79,9 @@ const Sidebar = ({ children }) => {
                                 )}
                             </div>
                         ))}
-                    </div>
                 </div>
-            </div>
-            <main>{children}</main>
+               </div>    
+           </div>
         </div>
-    );
-};
-
-export default Sidebar;
+  )
+}
