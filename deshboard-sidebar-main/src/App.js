@@ -11,6 +11,8 @@ import LoginSeller from './loginAndReg/LoginSeller.jsx';
 import UpdatePassword from '../src/Seller/UpdatePassword.jsx'
 import Logout from '../src/Seller/Logout.jsx'
 import Addproduct from './Seller/Product/AddProduct.jsx';
+import ShowSeller from '../src/Seller/ShowSeller.jsx'
+import ShowProduct from '../src/Seller/Product/ShowProduct.jsx'
 
 const App = () => {
   return (
@@ -26,7 +28,8 @@ const App = () => {
           <Route path="/password-change" element={<UpdatePassword/>} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/add-product" element={<Addproduct />} />
-
+          <Route path="/show-seller" element={<ShowSeller />} />
+          <Route path="/show-product" element={<ShowProduct />} />
           
         </Routes>
     </BrowserRouter>
