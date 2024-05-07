@@ -7,7 +7,9 @@ export default function Product() {
         <div>
             <Sidebar/>
         </div>
-        Product
+        <div>
+          Product List
+        </div>
     </div>
   )
 }
