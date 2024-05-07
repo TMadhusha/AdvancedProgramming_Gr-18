@@ -19,7 +19,6 @@ public class Product {
     private Long startingprice;
     private String description;
     private String author;
-    //private Long seller_id;
     @Column(name = "email")
     private String email;
 
