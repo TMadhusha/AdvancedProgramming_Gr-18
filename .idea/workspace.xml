@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f7cc07e-3112-4db2-a723-0698ebebcab7" name="Changes" comment="" />
+    <list default="true" id="7f7cc07e-3112-4db2-a723-0698ebebcab7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/repository/ProductRepository.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -140,6 +144,7 @@
       <workItem from="1714885631720" duration="29383000" />
       <workItem from="1714979083810" duration="12395000" />
       <workItem from="1715062633222" duration="1162000" />
+      <workItem from="1715063841094" duration="425000" />
     </task>
     <servers />
   </component>

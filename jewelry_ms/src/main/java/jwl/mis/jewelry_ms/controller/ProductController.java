@@ -35,14 +35,14 @@ public class ProductController {
     @PostMapping("/add-product")
     ResponseEntity<?> newProduct(@RequestBody Product newProduct) {
         // Check if the seller_id exists in the seller table
-        Optional<Seller> sellerOptional = sellerRepository.findById(newProduct.getSeller_id());
+        Optional<Seller> sellerOptional = Optional.ofNullable(sellerRepository.findSellerByEmail(newProduct.getEmail()));
         if (sellerOptional.isPresent()) {
             // Save the product if the seller_id exists
             Product savedProduct = productRepository.save(newProduct);
             return ResponseEntity.ok(savedProduct);
         } else {
             // Return an error response if the seller_id doesn't exist
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Seller with the provided ID does not exist.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Seller with the provided email does not exist.");
         }
     }
 
@@ -73,7 +73,7 @@ public class ProductController {
                     product.setAuthor(newProduct.getAuthor());
                     product.setStartingprice(newProduct.getStartingprice());
                     product.setDescription(newProduct.getDescription());
-                    product.setSeller_id(newProduct.getSeller_id());
+                    product.setEmail(newProduct.getEmail());
                     return productRepository.save(product);
                 }).orElseThrow(()->new UserNotFoundException(product_id));
     }

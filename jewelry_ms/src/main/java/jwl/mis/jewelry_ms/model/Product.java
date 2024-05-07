@@ -20,8 +20,8 @@ public class Product {
     private String description;
     private String author;
     //private Long seller_id;
-    @Column(name = "seller_id")
-    private Long seller_id;
+    @Column(name = "email")
+    private String email;
 
 
 
