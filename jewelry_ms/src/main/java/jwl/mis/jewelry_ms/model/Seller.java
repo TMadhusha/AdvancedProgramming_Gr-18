@@ -10,10 +10,10 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Customer {
+public class Seller {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cus_id;
+    private Long seller_id;
     private String UserName;
 
     private String password;
@@ -21,5 +21,4 @@ public class Customer {
     private String address;
     private String Mobile;
     private String Role;
-
 }

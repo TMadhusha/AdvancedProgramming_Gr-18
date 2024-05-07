@@ -33,12 +33,10 @@ public class InventoryController {
         System.out.println("test");
         return inventoryRepository.findById(item_id)
                 .map(inventory -> {
-                    inventory.setItemName(newInventory.getItemName());
-                    inventory.setType(newInventory.getType());
-                    inventory.setActualPrice(newInventory.getActualPrice());
+                    inventory.setName(newInventory.getName());
                     inventory.setDescription(newInventory.getDescription());
-                    inventory.setSellingPrice(newInventory.getSellingPrice());
-                    inventory.setAvailableStock(newInventory.getAvailableStock());
+                    inventory.setStartingPrice(newInventory.getStartingPrice());
+                    inventory.setImage(newInventory.getImage());
 
                     return inventoryRepository.save(inventory);
                 }).orElseThrow(()->new InventoryNotFoundException(item_id));
