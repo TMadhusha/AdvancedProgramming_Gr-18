@@ -56,14 +56,15 @@
   
   .text-section {
     flex: 1;
-    padding: 10px 20px;
+    padding: 30px 20px;
   }
   
   .rounded-image {
-    width: 100%;
+    width: 90%;
     height: 85vh; /* Half the height of the image */
     background-color: #ccc;
     border-radius: 0 100px 100px 0;
+    border: 15px solid #f8bc3b; /* Add border property */
     
   }
   
@@ -83,155 +84,7 @@
   }
 
 
+
+
 /* Home */
-
-/* BidForm */
-
-.bidForm {
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-}
-
-.bidForm label {
-  margin-right: 10px;
-}
-
-.bidForm .inputField {
-  margin-right: 10px;
-  margin-bottom: 10px;
-  padding: 5px;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-}
-
-.bidButton {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.bidButton:hover {
-  background-color: #0056b3;
-}
-
-/* Assuming you have a CSS file linked to your React component */
-
-/* Style for the product container */
-.item-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-/* Style for each bid item card */
-.bid-item-card {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Style for item image */
-.bid-item-card img {
-  width: 100%;
-  border-radius: 5px;
-}
-
-/* Style for item details */
-.item-details {
-  padding: 10px;
-}
-
-/* Style for item name */
-.item-details h2 {
-  margin-top: 0;
-  font-size: 1.2rem;
-}
-
-/* Style for item description */
-.item-details p {
-  margin: 5px 0;
-}
-
-/* Style for item price */
-.item-details p:last-child {
-  font-weight: bold;
-}
-
-/* Style for bid button */
-.bid-item-card button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.bid-item-card button:hover {
-  background-color: #0056b3;
-}
-
-.product-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.product-card {
-  width: 300px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  margin: 20px;
-}
-
-.product-image-container {
-  height: 200px;
-  overflow: hidden;
-}
-
-.product-image {
-  width: 10%;
-  height: 10%;
-  object-fit: cover;
-}
-
-.product-details {
-  padding: 20px;
-}
-
-.product-name {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.product-description {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.product-price {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.more-details-link {
-  display: block;
-  text-decoration: none;
-  color: blue;
-  font-weight: bold;
-}
-
-
 

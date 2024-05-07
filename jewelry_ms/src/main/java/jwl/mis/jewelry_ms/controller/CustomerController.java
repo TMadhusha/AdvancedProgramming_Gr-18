@@ -34,12 +34,12 @@ public class CustomerController {
     Customer updateCustomer(@RequestBody Customer newCustomer, @PathVariable Long cus_id) {
         return customerRepository.findById(cus_id)
                 .map(customer -> {
-                    customer.setFirstname(newCustomer.getFirstname());
-                    customer.setLastname(newCustomer.getLastname());
+                    customer.setUserName(newCustomer.getUserName());
                     customer.setEmail(newCustomer.getEmail());
                     customer.setAddress(newCustomer.getAddress());
-                    customer.setPhoneNo(newCustomer.getPhoneNo());
-                    customer.setHearAbout(newCustomer.getHearAbout());
+                    customer.setMobile(newCustomer.getMobile());
+                    customer.setRole(newCustomer.getRole());
+                    customer.setPassword(newCustomer.getPassword());
                     return customerRepository.save(customer);
                 })
                 .orElseThrow(() -> new CustomerNotFoundException(cus_id));
