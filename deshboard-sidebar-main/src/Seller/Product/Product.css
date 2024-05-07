@@ -1,0 +1,61 @@
+.thumbnails-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    background-image: url('bid.jpg'); /* Add the background image */
+    background-size: cover; /* Adjust background size */
+    background-repeat: no-repeat; /* Prevent background from repeating */
+    padding: 20px; /* Add padding to space out thumbnails */
+  }
+  
+  .thumbnail {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: transparent; /* Change background color to transparent */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  
+  .thumbnail:hover {
+    transform: translateY(-5px);
+  }
+  
+  .thumbnail-content {
+    text-align: center;
+  }
+  
+  .thumbnail h4 {
+    color: #f1eeee;
+  }
+  
+  .thumbnail p {
+    color: #edeaea;
+  }
+  h3 {
+    text-align: center; /* Center align the text */
+    font-size: 24px; /* Increase font size */
+    margin-bottom: 20px; /* Add some bottom margin for spacing */
+    color: #333; /* Change text color */
+    text-transform: uppercase; /* Convert text to uppercase */
+    font-weight: bold; /* Apply bold font weight */
+    letter-spacing: 2px; /* Add letter spacing */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1); /* Add a subtle text shadow */
+  }
+  
+  .thumbnail button {
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .thumbnail button:hover {
+    background-color: #0056b3;
+  }
+  
