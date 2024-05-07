@@ -18,8 +18,7 @@ public class Product {
     private String productname;
     private Long startingprice;
     private String description;
-    private Long stock;
-    private Date date;
+    private String author;
     //private Long seller_id;
     @Column(name = "seller_id")
     private Long seller_id;

@@ -70,10 +70,9 @@ public class ProductController {
         return productRepository.findById(product_id)
                 .map(product->{
                     product.setProductname(newProduct.getProductname());
-                    product.setDate(newProduct.getDate());
+                    product.setAuthor(newProduct.getAuthor());
                     product.setStartingprice(newProduct.getStartingprice());
                     product.setDescription(newProduct.getDescription());
-                    product.setStock(newProduct.getStock());
                     product.setSeller_id(newProduct.getSeller_id());
                     return productRepository.save(product);
                 }).orElseThrow(()->new UserNotFoundException(product_id));
