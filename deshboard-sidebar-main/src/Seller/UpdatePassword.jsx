@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link,useNavigate } from 'react-router-dom'
-
+import SidebarSeller from '../loginAndReg/SidebarSeller'
 
 
 export default function UpdatePassword() {
@@ -46,7 +46,7 @@ export default function UpdatePassword() {
       alert("Passwords Are Not Match try again...");
     } else {
       try {
-        await axios.put("http://localhost:8090/change-password", sellerpwd);
+        await axios.put("http://localhost:8080/change-password", sellerpwd);
         alert("Registration Completed...");
         // navigate("/login")
         handleCancel();
@@ -66,7 +66,7 @@ return(
     
     <div>
 
-   
+   <SidebarSeller/>
     <div className="wrapperr">
       
     <div className="text-center mt-4 name">

@@ -19,9 +19,9 @@ export default function SellerRegister() {
     e.preventDefault();
      {
       try {
-        await axios.post("http://localhost:8090/seller-logout");
+        await axios.post("http://localhost:8080/seller-logout");
         alert("Logout Completed...");
-        navigate("/logout")
+        navigate("/")
         
       } catch {
         
@@ -57,7 +57,7 @@ return(
     </td>
     <td>
             <div className="text-center fs-6">
-                        <Link to="/home"> Home </Link>
+                        
             </div>
     </td>
 </tr>

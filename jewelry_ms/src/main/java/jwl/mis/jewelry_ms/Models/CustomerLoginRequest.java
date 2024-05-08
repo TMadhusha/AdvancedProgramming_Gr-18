@@ -3,10 +3,10 @@ package jwl.mis.jewelry_ms.Models;
 import lombok.Data;
 
 @Data
-public class AdminLoginRequest {
+public class CustomerLoginRequest {
 
 
-    private String username;
+    private String email;
     private String password;
 
 }

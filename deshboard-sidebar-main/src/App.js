@@ -10,9 +10,9 @@ import SellerRegister from './loginAndReg/SellerRegister.jsx';
 import LoginSeller from './loginAndReg/LoginSeller.jsx';
 import UpdatePassword from '../src/Seller/UpdatePassword.jsx'
 import Logout from '../src/Seller/Logout.jsx'
-import Addproduct from './Seller/Product/AddProduct.jsx';
+import Addproduct from './Product/AddProduct.jsx';
 import ShowSeller from '../src/Seller/ShowSeller.jsx'
-import ShowProduct from '../src/Seller/Product/ShowProduct.jsx'
+import ShowProduct from './Product/ShowProduct.jsx'
 
 const App = () => {
   return (

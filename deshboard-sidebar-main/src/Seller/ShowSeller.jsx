@@ -17,7 +17,7 @@ const Seller = () => {
  const {seller_id}=useParams()
 
   const loadseller=async()=>{
-    const result=await axios.get("http://localhost:8090/get-seller");
+    const result=await axios.get("http://localhost:8080/get-seller");
     setseller(result.data);
   }
 
@@ -44,11 +44,11 @@ const Seller = () => {
     <tr>
       <th scope="col">Seller Id</th>
       <th scope="col">Firstname</th>
-      <th scope="col">Lastname</th>
       <th scope="col">Phone Number</th>
       <th scope="col">Email</th>
       <th scope="col">Address</th>
       <th scope="col">Dob</th>
+      <th scope="col">Role</th>
       
     </tr>
   </thead>
@@ -59,11 +59,11 @@ const Seller = () => {
           {/* <th scope="row" key={index}>{index+1}</th> */}
           <td>{seller.seller_id}</td>
           <td>{seller.firstname}</td>
-          <td>{seller.lastname}</td>
           <td>{seller.phonenumber}</td>
           <td>{seller.email}</td>
           <td>{seller.address}</td>
           <td>{seller.dob}</td>
+          <td>{seller.role}</td>
         
           
            

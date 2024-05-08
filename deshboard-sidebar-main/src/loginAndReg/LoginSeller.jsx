@@ -32,7 +32,7 @@ export default function LoginSeller() {
 
       try
       {
-      const response=await axios.post("http://localhost:8090/seller-login",seller)
+      const response=await axios.post("http://localhost:8080/seller-login",seller)
 
       if (response.status === 200) {
         alert("Login Successfull"); // Display response message

@@ -12,7 +12,7 @@ export default function SellerRegister() {
     // Clear form data
     setSellerReg({
         firstname:"",
-    lastname:"",
+    role:"",
     phonenumber:"",
     email:"",
     password:"",
@@ -25,7 +25,7 @@ export default function SellerRegister() {
 
   const [sellerReg,setSellerReg]=useState({
     firstname:"",
-    lastname:"",
+    role:"",
     phonenumber:"",
     email:"",
     password:"",
@@ -40,7 +40,7 @@ export default function SellerRegister() {
     console.log("Welcome To Seller Page..")
   })
 
-  const{firstname,lastname,phonenumber,email,password,address,dob,conpassword}=sellerReg
+  const{firstname,role,phonenumber,email,password,address,dob,conpassword}=sellerReg
 
   const onInputChange=(e)=>{
     setSellerReg({...sellerReg,[e.target.name]:e.target.value})
@@ -53,13 +53,13 @@ export default function SellerRegister() {
   
     if (!namePattern.test(firstname)) {
       alert("First-name can only contain letters and underscores.");
-    } else if (!namePattern.test(lastname)) {
+    } else if (!namePattern.test(role)) {
       alert("Last-name can only contain letters and underscores.");
     } else if (password !== conpassword) {
       alert("Passwords Are Not Match try again...");
     } else {
       try {
-        await axios.post("http://localhost:8090/register-seller", sellerReg);
+        await axios.post("http://localhost:8080/register-seller", sellerReg);
         alert("Registration Completed...");
         // navigate("/login")
         handleCancel();
@@ -100,18 +100,21 @@ return(
             onChange={(e)=>onInputChange(e)}/>
         </div>
 
-        <p>Last Name</p>
-        <div className="form-field d-flex align-items-center">
-            {/* <span className="far fa-user"></span> */}
-            <input 
-            type={"text"} 
-            name="lastname" 
-            id="lastname" 
-            placeholder="Last Name"
-            value={lastname}
-            required
-            onChange={(e)=>onInputChange(e)}/>
-        </div>
+        <p>Role</p>
+<div className="form-field d-flex align-items-center">
+    {/* <span className="far fa-user"></span> */}
+    <select 
+        name="role" 
+        id="role" 
+        value={role}
+        required
+        onChange={(e) => onInputChange(e)}
+    >
+        <option value="">Select Role</option>
+        <option value="user">Seller</option>
+        <option value="customer">Customer</option>
+    </select>
+</div>
 
 
         <p>Phonenumber</p>
@@ -141,18 +144,19 @@ return(
             onChange={(e)=>onInputChange(e)}/>
         </div>
 
-        <p>Address</p>
+                <p>Address</p>
         <div className="form-field d-flex align-items-center">
             {/* <span className="far fa-user"></span> */}
-            <input 
-            type={"text"} 
-            name="address" 
-            id="address" 
-            placeholder="Address"
-            value={address}
-            required
-            onChange={(e)=>onInputChange(e)}/>
+            <textarea 
+                name="address" 
+                id="address" 
+                placeholder="Address"
+                value={address}
+                required
+                onChange={(e) => onInputChange(e)}
+            ></textarea>
         </div>
+
 
         <p>Date Of Birth</p>
         <div className="form-field d-flex align-items-center">

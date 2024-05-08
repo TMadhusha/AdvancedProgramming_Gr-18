@@ -1,8 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link,useNavigate } from 'react-router-dom'
-
-
+import SidebarSeller from '../loginAndReg/SidebarSeller';
 
 
 export default function Addproduct() {
@@ -53,7 +52,7 @@ export default function Addproduct() {
         alert("Author can only contain letters and underscores.");
       } else  {
       // If all validations pass, submit the form
-      await axios.post("http://localhost:8090/add-product", product);
+      await axios.post("http://localhost:8080/add-product", product);
             handleCancel();
             alert("The product was successfully added...");
     //   navigate("/supplier");
@@ -62,8 +61,11 @@ export default function Addproduct() {
   
 
 return(
-  <div className="container">
+  <div>
     
+    <SidebarSeller/>
+  <div className="container">
+  
     <div className='main-container'>
       <div>
 
@@ -107,22 +109,21 @@ return(
         </td>
       </tr>
 
-
       <tr>
-        <td>
-          <label htmlFor='address' className='form-label'>Description</label>
-        </td>
-        <td>
-          <input
-            type={"text"}
-            className='form-control'
-            placeholder='Colombo'
-            name="description"
-            required
-            value={description}
-            onChange={(e) => onInputChange(e)} />
-        </td>
-      </tr>
+  <td>
+    <label htmlFor='description' className='form-label'>Description</label>
+  </td>
+  <td>
+    <textarea
+      className='form-control'
+      placeholder='Type Something to show '
+      name="description"
+      required
+      value={description}
+      onChange={(e) => onInputChange(e)}
+    ></textarea>
+  </td>
+</tr>
 
 
       <tr>
@@ -133,7 +134,7 @@ return(
           <input
             type={"text"}
             className='form-control'
-            placeholder='1'
+            placeholder='owner'
             name="author"
             required
             value={author}
@@ -164,12 +165,14 @@ return(
   <button type='submit' className='btn'>Submit</button>
   <span style={{ marginRight: '10px' }}></span>
   <button onClick={handleCancel} className="btn mt-3" type="reset">Cancel</button>
-  <Link className='btn btn-danger mx-2' to="/">Exit</Link>
+  <Link className='btn btn-danger mx-2' to="/logout">Exit</Link>
 </form>
 
       </div>
     </div>
     
   </div>
+  </div>
 )
 }
+

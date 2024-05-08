@@ -1,56 +1,108 @@
 package jwl.mis.jewelry_ms.controller;
 
-import jwl.mis.jewelry_ms.exception.CustomerNotFoundException;
+
+import jwl.mis.jewelry_ms.Models.CustomerLoginRequest;
+import jwl.mis.jewelry_ms.Models.SellerLoginRequest;
+import jwl.mis.jewelry_ms.exception.SellerNotFoundException;
+import jwl.mis.jewelry_ms.exception.UserNotFoundException;
 import jwl.mis.jewelry_ms.model.Customer;
+import jwl.mis.jewelry_ms.model.Seller;
+import jwl.mis.jewelry_ms.model.SellerSession;
 import jwl.mis.jewelry_ms.repository.CustomerRepository;
-import org.apache.catalina.User;
+import jwl.mis.jewelry_ms.repository.SellerRepository;
+import jwl.mis.jewelry_ms.repository.SellerSessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+//@RequestMapping("/api/supplier")
 public class CustomerController {
+
     @Autowired
     private CustomerRepository customerRepository;
 
-    @PostMapping("/customer")
-    Customer newCustomer(@RequestBody Customer newCustomer){
+
+
+
+    @PostMapping("/register-customer")
+    Customer newCustomer(@RequestBody Customer newCustomer) {
+        // Check if the email already exists
+        Customer existingcustomer = customerRepository.findCustomerByEmail(newCustomer.getEmail());
+        if (existingcustomer != null) {
+            String email = existingcustomer.getEmail();
+            throw new SellerNotFoundException(email + " is already in use.");
+        }
+
+        // If the email doesn't exist, save the new seller
+        System.out.println(newCustomer);
         return customerRepository.save(newCustomer);
     }
-    @GetMapping("/getcustomer")
-    List<Customer> getAllCustomers(){
+
+    @PostMapping("/customer-login")
+    public ResponseEntity<String> login(@RequestBody CustomerLoginRequest loginRequest) {
+        String email = loginRequest.getEmail();
+        String password = loginRequest.getPassword();
+
+        // Find the customer by email
+        Customer customer = customerRepository.findCustomerByEmail(email);
+
+        if (customer == null || !customer.getPassword().equals(password)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Check your email and password again");
+        } else {
+            // Return login successful message
+            return ResponseEntity.ok("Login successful");
+        }
+    }
+
+
+    //view all sellers
+    @GetMapping("/get-customer")
+    List<Customer>getAllCustomer(){
         return customerRepository.findAll();
     }
 
-    @GetMapping("/customer/{cus_id}")
-    Customer getCustomerById(@PathVariable Long cus_id){
-        return customerRepository.findById(cus_id)
-                .orElseThrow(()->new CustomerNotFoundException(cus_id));
-    }
 
-    @PutMapping("/customer/{cus_id}")
-    Customer updateCustomer(@RequestBody Customer newCustomer, @PathVariable Long cus_id) {
-        return customerRepository.findById(cus_id)
-                .map(customer -> {
-                    customer.setFirstname(newCustomer.getFirstname());
-                    customer.setLastname(newCustomer.getLastname());
-                    customer.setEmail(newCustomer.getEmail());
-                    customer.setAddress(newCustomer.getAddress());
-                    customer.setPhoneNo(newCustomer.getPhoneNo());
-                    customer.setHearAbout(newCustomer.getHearAbout());
-                    return customerRepository.save(customer);
-                })
-                .orElseThrow(() -> new CustomerNotFoundException(cus_id));
-    }
 
-    @DeleteMapping("/customer/{cus_id}")
-    String deleteCustomer(@PathVariable Long cus_id){
-        if(!customerRepository.existsById(cus_id)){
-            throw new CustomerNotFoundException(cus_id);
+
+
+
+    @PutMapping("/customer-password")
+    public ResponseEntity<?> updatecustomer(@RequestBody Customer newCustomer) {
+        String email = newCustomer.getEmail();
+        String newPassword = newCustomer.getPassword();
+
+        // Check if email exists in the SellerSession table
+        Optional<Customer> existingCustomer = Optional.ofNullable(customerRepository.findCustomerByEmail(email));
+        if(existingCustomer.isPresent()) {
+            Customer customer = existingCustomer.get();
+
+            // Update the password
+            customer.setPassword(newPassword);
+            customerRepository.save(customer);
+
+            return ResponseEntity.ok().build(); // Password updated successfully
+        } else {
+            // Email doesn't exist, return an error response
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email is invalid"); // You can customize the error message as needed
         }
-        customerRepository.deleteById(cus_id);
-        return "Customer with id "+ cus_id +"has been deleted success.";
     }
+
+
+
+
+
+
 }
+
+
+
+
+

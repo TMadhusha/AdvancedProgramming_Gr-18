@@ -2,12 +2,9 @@ package jwl.mis.jewelry_ms.controller;
 
 
 
-import jakarta.transaction.Transactional;
-import jwl.mis.jewelry_ms.Models.AdminLoginRequest;
 import jwl.mis.jewelry_ms.Models.SellerLoginRequest;
 import jwl.mis.jewelry_ms.exception.SellerNotFoundException;
 import jwl.mis.jewelry_ms.exception.UserNotFoundException;
-import jwl.mis.jewelry_ms.model.Admin;
 import jwl.mis.jewelry_ms.model.Seller;
 import jwl.mis.jewelry_ms.model.SellerSession;
 import jwl.mis.jewelry_ms.repository.SellerRepository;
@@ -16,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

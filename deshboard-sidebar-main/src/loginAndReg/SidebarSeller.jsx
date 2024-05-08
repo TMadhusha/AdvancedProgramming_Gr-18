@@ -6,32 +6,22 @@ const SidebarSeller = ({children}) => {
     const[isOpen ,setIsOpen] = useState(false);
     const menuItem=[
         {
-            path:"/",
-            name:"View Product",
+            path:"/logout",
+            name:"Home",
         },
         {
-            path:"/",
+            path:"/add-product",
             name:"Add Product",
         },
         {
-            path:"/product",
-            name:"Edit Profile",
-            
-        },
-        
-        {
-            path:"/customer",
-            name:"Product",
-            
-            
+            path:"/password-change",
+            name:"Password Managaner",
         },
         {
-            path:"/register-login",
-            name:"logout",
+            path:"/logout",
+            name:"Logout",
             
-            
-        }
-    ]
+        }]
     return (
         <div className="container">
            <div  className="sidebar">
