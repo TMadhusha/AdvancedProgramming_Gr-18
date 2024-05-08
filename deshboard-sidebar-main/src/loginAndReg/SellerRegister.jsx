@@ -208,7 +208,7 @@ return(
         
     </form>
     <div className="text-center fs-6">
-                <Link to="/register-login">
+                <Link to="/login-seller">
                     Sign-in
                 </Link>
     </div>

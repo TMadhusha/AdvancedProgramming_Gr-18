@@ -14,6 +14,7 @@ import Addproduct from './Product/AddProduct.jsx';
 import ShowSeller from '../src/Seller/ShowSeller.jsx'
 import ShowProduct from './Product/ShowProduct.jsx'
 import LoginCustomer from './loginAndReg/LoginCustomer.jsx';
+import CustomerReg from './loginAndReg/CustomerReg.jsx';
 
 
 const App = () => {
@@ -32,7 +33,8 @@ const App = () => {
           <Route path="/add-product" element={<Addproduct />} />
           <Route path="/show-seller" element={<ShowSeller />} />
           <Route path="/show-product" element={<ShowProduct />} />
-          <Route path="/login-customer" element={<ShowProduct />} />
+          <Route path="/login-customer" element={<LoginCustomer />} />
+          <Route path="/register-customer" element={<CustomerReg />} />
         </Routes>
     </BrowserRouter>
   );

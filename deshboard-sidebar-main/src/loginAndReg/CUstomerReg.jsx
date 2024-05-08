@@ -1,17 +1,17 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link,useNavigate } from 'react-router-dom'
+import Sidebar from '../components/Sidebar'
 
 
-
-export default function customerRegister() {
+export default function CustomerRegister() {
 
   let navigate=useNavigate()
 
   const handleCancel = () => {
     // Clear form data
-    customerReg({
-        firstname:"",
+    setCustomerReg({
+    username:"",
     role:"",
     phonenumber:"",
     email:"",
@@ -59,9 +59,9 @@ export default function customerRegister() {
       alert("Passwords Are Not Match try again...");
     } else {
       try {
-        await axios.post("http://localhost:8080/register-customer", customerReg);
+        await axios.post("http://localhost:8080/register-seller", customerReg);
         alert("Registration Completed...");
-        navigate("/login")
+        navigate("/login-customer")
         handleCancel();
       } catch (error) {
         if (error.response && error.response.status === 404) {
@@ -92,9 +92,9 @@ return(
             {/* <span className="far fa-user"></span> */}
             <input 
             type={"text"} 
-            name="firstname" 
-            id="firstname" 
-            placeholder="First Name"
+            name="username" 
+            id="username" 
+            placeholder="User Name"
             value={username}
             required
             onChange={(e)=>onInputChange(e)}/>
@@ -112,7 +112,6 @@ return(
     >
         <option value="">Select Role</option>
         <option value="user">Seller</option>
-        <option value="customer">Customer</option>
         <option value="customer">Customer</option>
     </select>
 </div>
@@ -209,7 +208,7 @@ return(
         
     </form>
     <div className="text-center fs-6">
-                <Link to="/register-login">
+                <Link to="/login-customer">
                     Sign-in
                 </Link>
     </div>

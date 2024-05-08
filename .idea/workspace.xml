@@ -5,21 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f7cc07e-3112-4db2-a723-0698ebebcab7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/Models/AdminLoginRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/controller/AdminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/model/Custommer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/repository/AdminRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/repository/AdminRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/controller/ReservationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/controller/SellerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/controller/SellerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/model/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/model/OnlinePayments.java" beforeDir="false" afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/model/OnlinePayments.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/model/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/model/Reservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/model/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/model/Seller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/model/SellerSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/model/SellerSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/repository/CustomerRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,6 +144,7 @@
       <workItem from="1715062633222" duration="1162000" />
       <workItem from="1715063841094" duration="5678000" />
       <workItem from="1715104753482" duration="12739000" />
+      <workItem from="1715196476268" duration="775000" />
     </task>
     <servers />
   </component>
