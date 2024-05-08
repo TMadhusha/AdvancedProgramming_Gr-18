@@ -11,12 +11,12 @@ import lombok.Data;
 @Data
 //@NoArgsConstructor
 //@AllArgsConstructor
-public class Customer {
+public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long seller_id;
-    private String firstname;
+    private Long admin_id;
+    private String username;
     private String phonenumber;
     private String email;
     private String password;

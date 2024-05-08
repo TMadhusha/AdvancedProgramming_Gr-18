@@ -1,8 +1,6 @@
 package jwl.mis.jewelry_ms.controller;
 
-import jwl.mis.jewelry_ms.model.Customer;
 import jwl.mis.jewelry_ms.model.Reservation;
-import jwl.mis.jewelry_ms.repository.CustomerRepository;
 import jwl.mis.jewelry_ms.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

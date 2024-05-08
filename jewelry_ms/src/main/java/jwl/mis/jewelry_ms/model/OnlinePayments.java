@@ -12,19 +12,19 @@ import jakarta.persistence.*;
         private String status;
         @ManyToOne
         @JoinColumn(name = "cus_id")
-        private Customer customer;
+        private Custommer custommer;
         private String payment_date;
 
 
         public OnlinePayments() {
         }
 
-        public OnlinePayments(String transaction_id, String amount, String payment_method, String status, Customer customer, String payment_date) {
+        public OnlinePayments(String transaction_id, String amount, String payment_method, String status, Custommer custommer, String payment_date) {
             this.transaction_id = transaction_id;
             this.amount = amount;
             this.payment_method = payment_method;
             this.status = status;
-            this.customer = customer;
+            this.custommer = custommer;
             this.payment_date = payment_date;
         }
 
@@ -68,12 +68,12 @@ import jakarta.persistence.*;
             this.status = status;
         }
 
-        public Customer getCustomer() {
-            return customer;
+        public Custommer getCustomer() {
+            return custommer;
         }
 
-        public void setCustomer(Customer customer) {
-            this.customer = customer;
+        public void setCustomer(Custommer custommer) {
+            this.custommer = custommer;
         }
 
         public String getPayment_date() {

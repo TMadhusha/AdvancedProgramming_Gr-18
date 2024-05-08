@@ -25,9 +25,9 @@ public class Reservation {
 
     @ManyToOne
     @JoinColumn(name = "cus_id")
-    private Customer customer;
+    private Custommer custommer;
 
-    public Reservation(Long reservation_id, Date reservation_date, String payment_amount, String payment_status, String reservation_status, Date pickup_date, String payment_method, String reservation_type, String additional_notes, Customer customer) {
+    public Reservation(Long reservation_id, Date reservation_date, String payment_amount, String payment_status, String reservation_status, Date pickup_date, String payment_method, String reservation_type, String additional_notes, Custommer custommer) {
         this.reservation_id = reservation_id;
         this.reservation_date = reservation_date;
         this.payment_amount = payment_amount;
@@ -37,7 +37,7 @@ public class Reservation {
         this.payment_method = payment_method;
         this.reservation_type = reservation_type;
         this.additional_notes = additional_notes;
-        this.customer = customer;
+        this.custommer = custommer;
     }
 
     public Reservation() {
@@ -116,11 +116,11 @@ public class Reservation {
         this.additional_notes = additional_notes;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public Custommer getCustomer() {
+        return custommer;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomer(Custommer custommer) {
+        this.custommer = custommer;
     }
 }

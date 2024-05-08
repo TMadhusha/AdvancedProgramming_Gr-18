@@ -16,7 +16,7 @@ public class SellerSession {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long session_id;
     private Long seller_id;
-    private String firstname;
+    private String username;
     private String phonenumber;
     private String email;
     private String password;

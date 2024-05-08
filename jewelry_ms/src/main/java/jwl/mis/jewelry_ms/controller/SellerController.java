@@ -65,7 +65,7 @@ public class SellerController {
             // Save session data
             SellerSession sellerSession = new SellerSession();
             sellerSession.setSeller_id(seller.getSeller_id());
-            sellerSession.setFirstname(seller.getFirstname());
+            sellerSession.setUsername(seller.getUsername());
             sellerSession.setRole(seller.getRole());
             sellerSession.setPhonenumber(seller.getPhonenumber());
             sellerSession.setAddress(seller.getAddress());
@@ -135,7 +135,7 @@ public class SellerController {
                 // Update seller attributes as needed
                 // For example:
                 seller.setSeller_id(session.getSeller_id());
-                seller.setFirstname(session.getFirstname());
+                seller.setUsername(session.getUsername());
                 seller.setRole(session.getRole());
                 seller.setPhonenumber(session.getPhonenumber());
                 seller.setEmail(session.getEmail());
@@ -153,7 +153,7 @@ public class SellerController {
                 // Set seller attributes based on seller session data
                 // For example:
                 seller.setSeller_id(session.getSeller_id());
-                seller.setFirstname(session.getFirstname());
+                seller.setUsername(session.getUsername());
                 seller.setRole(session.getRole());
                 seller.setPhonenumber(session.getPhonenumber());
                 seller.setEmail(session.getEmail());

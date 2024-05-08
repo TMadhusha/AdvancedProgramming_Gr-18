@@ -14,6 +14,7 @@ import Addproduct from './Product/AddProduct.jsx';
 import ShowSeller from '../src/Seller/ShowSeller.jsx'
 import ShowProduct from './Product/ShowProduct.jsx'
 
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -24,7 +25,7 @@ const App = () => {
           <Route path="/seller" element={<Seller />} />
           <Route path="/product" element={<Product />} />
           <Route path="/register-seller" element={<SellerRegister />} />
-          <Route path="/register-login" element={<LoginSeller />} />
+          <Route path="/login-seller" element={<LoginSeller />} />
           <Route path="/password-change" element={<UpdatePassword/>} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/add-product" element={<Addproduct />} />
