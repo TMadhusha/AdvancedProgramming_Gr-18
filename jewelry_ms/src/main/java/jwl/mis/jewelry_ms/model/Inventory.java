@@ -10,7 +10,7 @@ import lombok.Setter;
 public class Inventory {
     @Id
     private String pro_id;
-    private String Name;
+    private String pro_name;
     private String description;
     private String author;
     private double startingPrice;

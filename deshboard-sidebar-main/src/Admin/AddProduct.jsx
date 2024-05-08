@@ -1,0 +1,109 @@
+import axios from 'axios';
+import React, { useState } from 'react'
+
+export default function AddProduct() {
+    const [inventory,setInventory]=useState({
+        pro_id:"",
+        pro_name:"",
+        description:"",
+        author:"",
+        startingPrice:"",
+        image:null
+    });
+
+    const{pro_id,pro_name,description,author,startingPrice,image}=inventory;
+
+     // Function to fetch the last att_id from the backend and increment it
+//   const fetchLastProId = async () => {
+//     try {
+//       const result = await axios.get("http://localhost:8080/inventory");
+//       const lastPro = result.data[result.data.length - 1];
+//       const lastProId = lastPro ? parseInt(lastEmp.emp_id.slice(3)) : 0; // Extract the number part and convert to integer
+//       const newEmpId = `emp${String(lastEmpId + 1).padStart(3, '0')}`; // Increment the number part and format it
+//       setEmployees(prevEmployee => ({
+//         ...prevEmployee,
+//         emp_id: newEmpId
+//       }));
+//     } catch (error) {
+//       console.error("Error fetching last employee id:", error);
+//     }
+//   };
+
+const onChangeInput = (e) => {
+    if (e.target.name === "image") {
+        // Set the image file to state
+        setInventory({ ...inventory, image: e.target.files[0] });
+    } else {
+        // Set other input values to state
+        setInventory({ ...inventory, [e.target.name]: e.target.value });
+    }
+};
+
+
+const onSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+        const formData = new FormData();
+        formData.append("pro_id", pro_id);
+        formData.append("pro_name", pro_name);
+        formData.append("description", description);
+        formData.append("author", author);
+        formData.append("startingPrice", startingPrice);
+        formData.append("image", image);
+
+        await axios.post("http://localhost:8080/inventory", formData, {
+            headers: {
+                "Content-Type": "multipart/form-data" // Set content type to multipart/form-data
+            }
+        });
+
+        window.alert("Product added successfully...");
+    } catch (error) {
+        console.error("Error adding product:", error);
+        window.alert("Failed to add product. Please try again.");
+    }
+};
+
+  return (
+    <div>
+        <div>
+            <form onSubmit={(e) => onSubmit(e)}>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Product ID:</td>
+                            <td><input type='number' name="pro_id" placeholder='Product ID' value={pro_id} onChange={(e) => onChangeInput(e)}/></td>
+                        </tr>
+                        <tr>
+                            <td>Product Name:</td>
+                            <td><input type='text' name="pro_name" placeholder='Product Name' value={pro_name} onChange={(e) => onChangeInput(e)}/></td>
+                        </tr>
+                        <tr>
+                            <td>Product Author:</td>
+                            <td><input type='text' name="author" placeholder='Author' value={author} onChange={(e) => onChangeInput(e)}/></td>
+                        </tr>
+                        <tr>
+                            <td>Description:</td>
+                            <td><input type='text' name="description" placeholder='Description' value={description} onChange={(e) => onChangeInput(e)}/></td>
+                        </tr>
+                        <tr>
+                            <td>Starting price:</td>
+                            <td><input type='text' name="startingPrice" placeholder='Starting price' value={startingPrice} onChange={(e) => onChangeInput(e)}/></td>
+                        </tr>
+                        <tr>
+                                <td>Image:</td>
+                                <td><input type='file' name="image" onChange={(e) => onChangeInput(e)} /></td>
+                        </tr>
+                        <tr className='button-container'>
+                            <td><button type='submit'>Add</button></td>
+                            <td><button>Cancel</button></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+  )
+}

@@ -59,7 +59,7 @@ public class InventoryController {
             // Perform the database operation in the new thread
             result[0] = inventoryRepository.findById(item_id)
                     .map(inventory -> {
-                        inventory.setName(newInventory.getName());
+                        inventory.setPro_name(newInventory.getPro_name());
                         inventory.setDescription(newInventory.getDescription());
                         inventory.setStartingPrice(newInventory.getStartingPrice());
                         inventory.setImage(newInventory.getImage());
