@@ -5,11 +5,11 @@ import Sidebar from '../components/Sidebar';
 
 
 
-export default function Logincustomer() {
+export default function LoginCustomer() {
 
   let navigate=useNavigate()
 
-  const [seller,setSeller]=useState({
+  const [customer,setCustomer]=useState({
         email:"",
         password:"",
         
@@ -20,10 +20,10 @@ export default function Logincustomer() {
     console.log("Welcome To AdminPage Page..")
   })
 
-  const{email,password}=seller
+  const{email,password}=customer
 
   const onInputChange=(e)=>{
-    setSeller({...seller,[e.target.name]:e.target.value})
+    setCustomer({...customer,[e.target.name]:e.target.value})
 
   }
 
@@ -32,7 +32,7 @@ export default function Logincustomer() {
 
       try
       {
-      const response=await axios.post("http://localhost:8080/customer-login",seller)
+      const response=await axios.post("http://localhost:8080/seller-login",customer)
 
       if (response.status === 200) {
         alert("Login Successfull"); // Display response message
@@ -54,7 +54,7 @@ return(
             </div>
                 
             <div className="text-center mt-4 name">
-                Seller Login Form
+                Customer Login Form
             </div>
         <form className="p-3 mt-3" onSubmit={(e)=>onSubmit(e)}>
                 <div className="form-field d-flex align-items-center">

@@ -13,6 +13,7 @@ import Logout from '../src/Seller/Logout.jsx'
 import Addproduct from './Product/AddProduct.jsx';
 import ShowSeller from '../src/Seller/ShowSeller.jsx'
 import ShowProduct from './Product/ShowProduct.jsx'
+import LoginCustomer from './loginAndReg/LoginCustomer.jsx';
 
 
 const App = () => {
@@ -31,7 +32,7 @@ const App = () => {
           <Route path="/add-product" element={<Addproduct />} />
           <Route path="/show-seller" element={<ShowSeller />} />
           <Route path="/show-product" element={<ShowProduct />} />
-          
+          <Route path="/login-customer" element={<ShowProduct />} />
         </Routes>
     </BrowserRouter>
   );
