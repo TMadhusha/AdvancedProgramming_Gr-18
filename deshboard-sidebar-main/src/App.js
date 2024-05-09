@@ -14,7 +14,7 @@ import Addproduct from './Product/AddProduct.jsx';
 import ShowSeller from '../src/Seller/ShowSeller.jsx'
 import ShowProduct from './Product/ShowProduct.jsx'
 import LoginCustomer from './loginAndReg/LoginCustomer.jsx';
-import CustomerReg from './loginAndReg/CustomerReg.jsx';
+import CustomerReg from './loginAndReg/CUstomerReg.jsx'
 import AdminRegister from './loginAndReg/AdminReg.jsx';
 import LoginAdmin from './loginAndReg/LoginAdmin.jsx';
 

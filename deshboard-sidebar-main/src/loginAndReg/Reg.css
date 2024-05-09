@@ -1,0 +1,82 @@
+.wrapperr {
+    margin-left:00px; /* Adjust this value based on your sidebar width */
+  }
+  
+  .name {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  form {
+    margin-top: 45px;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  td {
+    padding: 10px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 5px;
+  }
+  
+  select {
+    padding: 8px 30px 8px 8px; /* Adjust padding for dropdown arrow */
+    -webkit-appearance: none; /* Remove default arrow */
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="%23939393" d="M7 7l3-3 3 3m0 6l-3 3-3-3" stroke="%23939393" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'); /* Custom arrow */
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  button.btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button.btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .form-field2 {
+    margin-top: 10px;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .fs-6 {
+    font-size: 14px;
+  }
+  
+  .fs-6 a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .fs-6 a:hover {
+    text-decoration: underline;
+  }
+  

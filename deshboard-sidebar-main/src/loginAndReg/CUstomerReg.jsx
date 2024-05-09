@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
-
+import './Reg.css'
 export default function CustomerRegister() {
   let navigate = useNavigate();
 
