@@ -15,6 +15,8 @@ import ShowSeller from '../src/Seller/ShowSeller.jsx'
 import ShowProduct from './Product/ShowProduct.jsx'
 import LoginCustomer from './loginAndReg/LoginCustomer.jsx';
 import CustomerReg from './loginAndReg/CustomerReg.jsx';
+import AdminRegister from './loginAndReg/AdminReg.jsx';
+import LoginAdmin from './loginAndReg/LoginAdmin.jsx';
 
 
 const App = () => {
@@ -35,6 +37,8 @@ const App = () => {
           <Route path="/show-product" element={<ShowProduct />} />
           <Route path="/login-customer" element={<LoginCustomer />} />
           <Route path="/register-customer" element={<CustomerReg />} />
+          <Route path="/register-admin" element={<AdminRegister />} />
+          <Route path="/login-admin" element={<LoginAdmin/>} />
         </Routes>
     </BrowserRouter>
   );

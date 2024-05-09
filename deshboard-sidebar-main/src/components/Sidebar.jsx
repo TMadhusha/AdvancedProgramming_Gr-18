@@ -21,6 +21,12 @@ const Sidebar = ({children}) => {
             
         },
         {
+            path:"/login-admin",
+            name:"Admin",
+            
+            
+        },
+        {
             path:"/login-customer",
             name:"Customer",
             

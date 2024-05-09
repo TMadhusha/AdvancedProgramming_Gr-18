@@ -2,14 +2,14 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import Sidebar from '../components/Sidebar';
+import SidebarSeller from './SidebarSeller';
 
 
-
-export default function LoginCustomer() {
+export default function LoginSeller() {
 
   let navigate=useNavigate()
 
-  const [customer,setCustomer]=useState({
+  const [admin,setAdmin]=useState({
         email:"",
         password:"",
         
@@ -20,10 +20,10 @@ export default function LoginCustomer() {
     console.log("Welcome To AdminPage Page..")
   })
 
-  const{email,password}=customer
+  const{email,password}=admin
 
   const onInputChange=(e)=>{
-    setCustomer({...customer,[e.target.name]:e.target.value})
+    setAdmin({...admin,[e.target.name]:e.target.value})
 
   }
 
@@ -32,7 +32,7 @@ export default function LoginCustomer() {
 
       try
       {
-      const response=await axios.post("http://localhost:8080/customer-login",customer)
+      const response=await axios.post("http://localhost:8080/admin-login",admin)
 
       if (response.status === 200) {
         alert("Login Successfull"); // Display response message
@@ -54,7 +54,7 @@ return(
             </div>
                 
             <div className="text-center mt-4 name">
-                Customer Login Form
+                Admin Login Form
             </div>
         <form className="p-3 mt-3" onSubmit={(e)=>onSubmit(e)}>
                 <div className="form-field d-flex align-items-center">
@@ -85,11 +85,11 @@ return(
                 </button>
         </form>
                 <div className="text-center fs-6">
-                <Link to="/register-seller">
+                <Link to="/register-admin">
                     Forget-Password
                 </Link>
                 {"\t"}or{"\t"}
-                <Link to="/register-customer">
+                <Link to="/register-admin">
                     Sign-Up
                 </Link>
                    

@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 
-export default function CustomerRegister() {
+export default function AdminRegister() {
   let navigate = useNavigate();
 
   const handleCancel = () => {
     // Clear form data
-    setCustomerReg({
+    setAdminReg({
       username: '',
       role: '',
       phonenumber: '',
@@ -20,7 +20,7 @@ export default function CustomerRegister() {
     });
   };
 
-  const [customerReg, setCustomerReg] = useState({
+  const [adminReg, setAdminReg] = useState({
     username: '',
     role: '',
     phonenumber: '',
@@ -35,10 +35,10 @@ export default function CustomerRegister() {
     console.log('Welcome To Seller Page..');
   });
 
-  const { username, role, phonenumber, email, password, address, dob, conpassword } = customerReg;
+  const { username, role, phonenumber, email, password, address, dob, conpassword } = adminReg;
 
   const onInputChange = (e) => {
-    setCustomerReg({ ...customerReg, [e.target.name]: e.target.value });
+    setAdminReg({ ...adminReg, [e.target.name]: e.target.value });
   };
 
   const onSubmit = async (e) => {
@@ -53,7 +53,7 @@ export default function CustomerRegister() {
       alert('Passwords Are Not Match try again...');
     } else {
       try {
-        await axios.post('http://localhost:8080/register-customer', customerReg);
+        await axios.post('http://localhost:8080/register-admin', adminReg);
         alert('Registration Completed...');
         navigate('/login-customer');
         handleCancel();
@@ -192,21 +192,32 @@ export default function CustomerRegister() {
                   />
                 </td>
               </tr>
+
+              <tr>
+                <td>
+                <div className="form-field2 d-flex align-items-center">
+                    <button className="btn mt-3" type="submit">
+                      Submit
+                    </button>
+                </div>
+                </td>
+
+                <td>
+                <div className="form-field2 d-flex align-items-center">
+                      <button onClick={handleCancel} className="btn mt-3" type="reset">
+                        Cancel
+                      </button>
+                </div>
+
+                </td>
+              </tr>
             </tbody>
           </table>
-          <div className="form-field2 d-flex align-items-center">
-            <button className="btn mt-3" type="submit">
-              Submit
-            </button>
-          </div>
-          <div className="form-field2 d-flex align-items-center">
-            <button onClick={handleCancel} className="btn mt-3" type="reset">
-              Cancel
-            </button>
-          </div>
+         
+          
         </form>
         <div className="text-center fs-6">
-          <Link to="/login-customer">Sign-in</Link>
+          <Link to="/login-admin">Sign-in</Link>
         </div>
       </div>
     </div>
