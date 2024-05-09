@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { FaUser, FaShoppingCart, FaProductHunt, FaLock, FaHome, FaSignOutAlt } from 'react-icons/fa'; // Import icons from react-icons library
 
-const Sidebar = ({ children }) => {
+export default function Customerbar() {
     const [openSubItemIndex, setOpenSubItemIndex] = useState(null);
 
     const toggleSubMenu = (index) => {
@@ -10,62 +11,49 @@ const Sidebar = ({ children }) => {
 
     const menuItem = [
         {
-            path: "/",
+            path: "/home",
             name: "Home",
+            icon: <FaHome /> // Home icon
         },
         {
-            path: "/product",
-            name: "Product",
-        },
-        {
-            path: "/seller",
+            path: "/cx-seller",
             name: "Seller",
+            icon: <FaShoppingCart /> // Shopping cart icon
         },
         {
-            path: "/register",
-            name: "Register",
-            subItems: [
-                {
-                    path: "/seller-register",
-                    name: "Seller"
-                },
-                {
-                    path: "/customer-register",
-                    name: "Customer"
-                }
-            ]
+            path: "/cx-products",
+            name: "All Products",
+            icon: <FaProductHunt /> // Product icon
         },
         {
-            path: "/login",
-            name: "Log In",
-            subItems: [
-                {
-                    path: "/dashborard",
-                    name: "Admin"
-                },
-                {
-                    path: "/seller-login",
-                    name: "Seller"
-                },
-                {
-                    path: "/customer",
-                    name: "Customer"
-                }
-            ]
+            path: "/my-bids",
+            name: "My Bids",
+            icon: <FaLock /> // Lock icon
         },
+        {
+            path: "/account",
+            name: "My Account",
+            icon: <FaUser /> // User icon
+        },
+        {
+            path: "/logout",
+            name: "Logout",
+            icon: <FaSignOutAlt /> // Logout icon
+        }
     ];
 
     return (
         <div className="container">
             <div className="sidebar">
                 <div className="top_section">
-                    <h1 className="logo">Jewelry Online Auction System</h1>
-                    <div className='container' style={{ gap: "20px", paddingLeft: "25%" }}>
+                    <h1>Customer</h1> {/* Update title to "Customer" */}
+                    <div className='container' style={{ gap: "20px", paddingLeft: "32%" }}>
                         {menuItem.map((item, index) => (
                             <div key={index}>
                                 {item.subItems ? (
-                                    <div className="link">
-                                        <div className="link_text" onClick={() => toggleSubMenu(index)}>
+                                    <div className="link" onClick={() => toggleSubMenu(index)}>
+                                        <div className="link_text">
+                                            {item.icon} {/* Render icon */}
                                             {item.name}
                                         </div>
                                         {openSubItemIndex === index && (
@@ -86,7 +74,10 @@ const Sidebar = ({ children }) => {
                                     </div>
                                 ) : (
                                     <NavLink to={item.path} className="link" activeClassName="active">
-                                        <div className="link_text">{item.name}</div>
+                                        <div className="link_text">
+                                            {item.icon} {/* Render icon */}
+                                            {item.name}
+                                        </div>
                                     </NavLink>
                                 )}
                             </div>
@@ -94,9 +85,6 @@ const Sidebar = ({ children }) => {
                     </div>
                 </div>
             </div>
-            <main>{children}</main>
         </div>
     );
-};
-
-export default Sidebar;
+}
