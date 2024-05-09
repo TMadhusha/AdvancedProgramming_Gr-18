@@ -313,7 +313,6 @@ button:hover {
   background-color: #0056b3;
 }
 
-
 .my-bids-container {
   margin: 20px;
 }
@@ -330,16 +329,16 @@ button:hover {
   margin-bottom: 20px;
 }
 
-.error-message {
+.my-bids-error-message {
   color: red;
 }
 
-.bid-list {
+.my-bids-list {
   list-style-type: none;
   padding: 0;
 }
 
-.bid-item {
+.my-bids-item {
   margin-bottom: 20px;
   padding: 10px;
   background-color: #fff;
@@ -347,17 +346,11 @@ button:hover {
   border-radius: 5px;
 }
 
-.bid-id,
-.bid-price,
-.current-price,
-.bid-date,
-.customer-id {
+.my-bids-bid-id,
+.my-bids-bid-price,
+.my-bids-current-price,
+.my-bids-bid-date,
+.my-bids-customer-id {
   margin: 5px 0; /* Adjust margin for each paragraph */
 }
-
-
-
-
-
-
 
