@@ -1,10 +1,11 @@
 import React from 'react'
-import Sidebar from '../components/Sidebar'
+import Customerbar from '../Customer/Customerbar'
+
 export default function Customer() {
   return (
     <div>
         <div>
-            <Sidebar/>
+            <Customerbar/>
         </div>
         Customer
     </div>

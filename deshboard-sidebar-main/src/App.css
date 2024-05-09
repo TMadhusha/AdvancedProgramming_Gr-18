@@ -84,7 +84,273 @@
   }
 
 
-
-
 /* Home */
+
+/* Sidebar */
+
+.sub_items {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.link:hover .sub_items {
+  display: block;
+}
+
+.sub_items li {
+  list-style-type: none;
+}
+
+.sub_items a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+  padding: 5px 0;
+}
+
+.sub_items a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Ensure main menu text stays visible when dropdown is shown */
+.link_text:hover + .sub_items {
+  display: block;
+}
+
+.active {
+  color: #0f0401; 
+}
+
+
+
+/*Product*/
+
+.main-contentP {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.thumbnail {
+  width: 200px; /* Set thumbnail width */
+  margin: 10px; /* Add margin to separate thumbnails */
+  border: 1px solid #ccc; /* Add border for better separation */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  background-color: #fff;
+}
+
+.thumbnail img {
+  width: 100%; /* Make image fill the thumbnail */
+  border-top-left-radius: 5px; /* Rounded corners for image */
+  border-top-right-radius: 5px;
+}
+
+.thumbnail-content {
+  padding: 10px; /* Add padding for content */
+}
+
+.thumbnail-content h3 {
+  margin: 0; /* Remove margin for heading */
+}
+
+.thumbnail-content p {
+  margin: 5px 0; /* Add margin to paragraphs */
+}
+
+.thumbnail-content button {
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  border: none; /* Remove button border */
+  padding: 5px 10px; /* Add padding to button */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  border-radius: 3px; /* Add button border radius */
+}
+
+.thumbnail-content button:hover {
+  background-color: #0056b3; /* Change button background color on hover */
+}
+
+.link_text {
+  display: flex;
+  align-items: center; /* Align items vertically */
+}
+
+.link_text svg {
+  margin-right: 10px; /* Adjust the spacing between icon and text */
+}
+
+
+.seller-table {
+  margin: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.thumbnail {
+  width: 100px; /* Adjust the width as needed */
+  height: auto;
+}
+
+
+.product-list {
+  margin: 20px;
+}
+
+.product-list h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color:  rgb(11, 11, 71);
+}
+
+.product-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.product-list li {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+}
+
+.product-list li:last-child {
+  border-bottom: none;
+}
+
+.product-list img {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+  object-fit: cover;
+}
+
+.product-list h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+  
+}
+
+.product-list p {
+  margin: 5px 0;
+}
+
+.product-info {
+  color: darkblue;
+}
+
+
+.bid-button {
+  background-color: darkblue; 
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.bid-button:hover {
+  background-color: darkblue; 
+}
+
+/* CSS for BidForm component */
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.my-bids-container {
+  margin: 20px;
+}
+
+.my-bids-content {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.my-bids-heading {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.my-bids-error-message {
+  color: red;
+}
+
+.my-bids-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.my-bids-item {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.my-bids-bid-id,
+.my-bids-bid-price,
+.my-bids-current-price,
+.my-bids-bid-date,
+.my-bids-customer-id {
+  margin: 5px 0; /* Adjust margin for each paragraph */
+}
 

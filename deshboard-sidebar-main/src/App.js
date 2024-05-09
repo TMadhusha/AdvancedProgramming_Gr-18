@@ -11,6 +11,9 @@ import Bids from './pages/Bids.jsx';
 import CustomerDetails from './Admin/CustomerDetails.jsx';
 import SellerDetails from './Admin/SellerDetails.jsx';
 import ProductDetails from './Admin/ProductDetails.jsx';
+import CxSeller from './Customer/CxSeller.jsx';
+import CxProducts from './Customer/CxProducts.jsx';
+import MyBids from './Customer/MyBids.jsx';
 
 const App = () => {
   return (
@@ -26,6 +29,9 @@ const App = () => {
           <Route path='/customerdetails' element={<CustomerDetails/>}/>
           <Route path='/sellerdetails' element={<SellerDetails/>}/>
           <Route path='/productdetails' element={<ProductDetails/>}/>
+          <Route path='/cx-seller' element={<CxSeller/>}/>
+          <Route path='/cx-products' element={<CxProducts/>}/>
+          <Route path='/my-bids' element={<MyBids/>}/>
         </Routes>
     </BrowserRouter>
   );
