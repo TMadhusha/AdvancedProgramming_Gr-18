@@ -12,7 +12,12 @@
   }
   
   table {
-    width: 100%;
+    
+    margin-left: 25%; /* Reduce left margin by 25% */
+    margin-right: 25%;
+    width: 50%; /* Decrease table width by 50% */
+  margin: 0 auto; /* Center the table horizontally */
+  border-collapse: collapse;
   }
   
   td {

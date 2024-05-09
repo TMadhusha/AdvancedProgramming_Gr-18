@@ -55,7 +55,7 @@ export default function SellerRegister() {
       try {
         await axios.post('http://localhost:8080/register-seller', sellerReg);
         alert('Registration Completed...');
-        // navigate("/login")
+        navigate("/login-seller")
         handleCancel();
       } catch (error) {
         if (error.response && error.response.status === 404) {
