@@ -13,7 +13,7 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private String pro_id;
-    private String name;
+    private String pro_name;
     private String description;
     private String author;
     private double startingPrice;
