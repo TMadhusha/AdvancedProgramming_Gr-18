@@ -1,7 +1,10 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export default function AddProduct() {
+    let navigate=useNavigate();
+
     const [inventory,setInventory]=useState({
         pro_id:"",
         pro_name:"",
@@ -14,20 +17,24 @@ export default function AddProduct() {
     const{pro_id,pro_name,description,author,startingPrice,image}=inventory;
 
      // Function to fetch the last att_id from the backend and increment it
-//   const fetchLastProId = async () => {
-//     try {
-//       const result = await axios.get("http://localhost:8080/inventory");
-//       const lastPro = result.data[result.data.length - 1];
-//       const lastProId = lastPro ? parseInt(lastEmp.emp_id.slice(3)) : 0; // Extract the number part and convert to integer
-//       const newEmpId = `emp${String(lastEmpId + 1).padStart(3, '0')}`; // Increment the number part and format it
-//       setEmployees(prevEmployee => ({
-//         ...prevEmployee,
-//         emp_id: newEmpId
-//       }));
-//     } catch (error) {
-//       console.error("Error fetching last employee id:", error);
-//     }
-//   };
+  const fetchLastProId = async () => {
+    try {
+      const result = await axios.get("http://localhost:8080/inventory");
+      const lastPro = result.data[result.data.length - 1];
+      const lastProId = lastPro ? parseInt(lastPro.pro_id) : 0; // Extract the number part and convert to integer
+      const newProId = `${String(lastProId + 1)}`; // Increment the number part and format it
+      setInventory(prevInventory => ({
+        ...prevInventory,
+        pro_id: newProId
+      }));
+    } catch (error) {
+      console.error("Error fetching last product id:", error);
+    }
+  };
+
+  useEffect(()=>{
+    fetchLastProId();
+  },[])
 
 const onChangeInput = (e) => {
     if (e.target.name === "image") {
@@ -59,6 +66,18 @@ const onSubmit = async (e) => {
         });
 
         window.alert("Product added successfully...");
+
+        // After successfully adding the product, reset the form and navigate away
+        setInventory({
+            pro_id: "",
+            pro_name: "",
+            description: "",
+            author: "",
+            startingPrice: "",
+            image: null
+        });
+
+
     } catch (error) {
         console.error("Error adding product:", error);
         window.alert("Failed to add product. Please try again.");

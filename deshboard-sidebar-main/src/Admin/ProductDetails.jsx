@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Adminbar from '../components/Adminbar';
 import axios from 'axios';
 import AddProduct from './AddProduct';
+import UpdateProduct from './UpdateProduct';
 
 export default function ProductDetails() {
     const [inventory, setInventory] = useState([]);
     const [showAddProduct, setShowAddProduct] = useState(false); // State to control the visibility of AddProduct popup
+    const [showEditProduct,setEditProduct]=useState(false);
+    const [selectedProductId, setSelectedProductId] = useState(null); 
 
     useEffect(() => {
         loadProduct();
@@ -15,6 +18,18 @@ export default function ProductDetails() {
         const result = await axios.get("http://localhost:8080/inventory");
         setInventory(result.data);
     }
+
+    const deleteProduct=async (pro_id)=>{
+        const confirmDelete = window.confirm("Are you sure you want to delete this product?");
+        if(confirmDelete){
+          try{
+            await axios.delete(`http://localhost:8080/inventory/${pro_id}`)
+            loadProduct();
+          }catch(error){
+            window.alert("The product cannot be deleted...!")
+          }
+        }  
+      }
 
     return (
         <div>
@@ -50,8 +65,8 @@ export default function ProductDetails() {
                                         <td>{inventory.author}</td>
                                         <td>{inventory.description}</td>
                                         <td>{inventory.startingPrice}</td>
-                                        <td><button>Update</button></td>
-                                        <td><button>Delete</button></td>
+                                        <td><button onClick={() => setSelectedProductId(inventory.pro_id)}>Update</button></td>
+                                        <td><button onClick={() => deleteProduct(inventory.pro_id)}>Delete</button></td>
                                     </tr>
                                 ))
                             }
@@ -65,6 +80,14 @@ export default function ProductDetails() {
                     <div className="modal-content">
                         <span className="close" onClick={() => setShowAddProduct(false)}>&times;</span>
                         <AddProduct setShowAddProduct={setShowAddProduct} />
+                    </div>
+                </div>
+            )}
+            {selectedProductId && ( // Only render the UpdateProduct modal if a product is selected
+                <div className="modal">
+                    <div className="modal-content">
+                        <span className="close" onClick={() => setSelectedProductId(null)}>&times;</span>
+                        <UpdateProduct pro_id={selectedProductId} setEditProduct={setEditProduct} />
                     </div>
                 </div>
             )}
