@@ -1,5 +1,5 @@
 package jwl.mis.jewelry_ms.controller;
-import jwl.mis.jewelry_ms.exception.InventoryNotFoundException;
+
 import jwl.mis.jewelry_ms.model.Inventory;
 import jwl.mis.jewelry_ms.repository.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,13 +9,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-
 
 @RestController
 @CrossOrigin("http://localhost:3000")
 public class InventoryController {
+
     @Autowired
     private InventoryRepository inventoryRepository;
 
@@ -35,14 +33,15 @@ public class InventoryController {
             e.printStackTrace();
             return null;
         }
+    public Inventory newInventory(@RequestBody Inventory newInventory) {
+        // Save the new inventory item
+        return inventoryRepository.save(newInventory);
     }
+
     @GetMapping("/inventory")
-    List<Inventory> getAllInventory() throws InterruptedException, ExecutionException {
-        CompletableFuture<List<Inventory>> future = CompletableFuture.supplyAsync(() -> {
-            // Perform the database operation in a separate thread
-            return inventoryRepository.findAll();
-        });
-        return future.get(); // Wait for the asynchronous operation to complete and return the result
+    public List<Inventory> getAllInventory() {
+        // Retrieve all inventory items
+        return inventoryRepository.findAll();
     }
 
     @GetMapping("/inventory/{item_id}")

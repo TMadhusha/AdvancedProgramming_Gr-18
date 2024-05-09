@@ -1,6 +1,7 @@
 package jwl.mis.jewelry_ms.model;
 
 import jakarta.persistence.*;
+import jwl.mis.jewelry_ms.model.Seller;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +10,8 @@ import lombok.Setter;
 @Setter
 public class Inventory {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private String pro_id;
     private String pro_name;
     private String description;
@@ -18,6 +21,7 @@ public class Inventory {
     @Column(columnDefinition = "LONGBLOB")
     private byte[] image;
 
-
-
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
+    private Seller seller;
 }
