@@ -9,7 +9,7 @@ export default function SellerRegister() {
   const handleCancel = () => {
     // Clear form data
     setSellerReg({
-      firstname: '',
+      username: '',
       role: '',
       phonenumber: '',
       email: '',
@@ -21,7 +21,7 @@ export default function SellerRegister() {
   };
 
   const [sellerReg, setSellerReg] = useState({
-    firstname: '',
+    username: '',
     role: '',
     phonenumber: '',
     email: '',
@@ -35,7 +35,7 @@ export default function SellerRegister() {
     console.log('Welcome To Seller Page..');
   });
 
-  const { firstname, role, phonenumber, email, password, address, dob, conpassword } = sellerReg;
+  const { username, role, phonenumber, email, password, address, dob, conpassword } = sellerReg;
 
   const onInputChange = (e) => {
     setSellerReg({ ...sellerReg, [e.target.name]: e.target.value });
@@ -45,7 +45,7 @@ export default function SellerRegister() {
     e.preventDefault();
     const namePattern = /^[a-zA-Z_]+$/;
 
-    if (!namePattern.test(firstname)) {
+    if (!namePattern.test(username)) {
       alert('First-name can only contain letters and underscores.');
     } else if (!namePattern.test(role)) {
       alert('Last-name can only contain letters and underscores.');
@@ -77,14 +77,14 @@ export default function SellerRegister() {
           <table>
             <tbody>
               <tr>
-                <td>First Name</td>
+                <td>User Name</td>
                 <td>
                   <input
                     type="text"
-                    name="firstname"
+                    name="username"
                     id="firstname"
-                    placeholder="First Name"
-                    value={firstname}
+                    placeholder="user Name"
+                    value={username}
                     required
                     onChange={(e) => onInputChange(e)}
                   />
@@ -102,7 +102,7 @@ export default function SellerRegister() {
                   >
                     <option value="">Select Role</option>
                     <option value="user">Seller</option>
-                    <option value="customer">Customer</option>
+                   
                   </select>
                 </td>
               </tr>

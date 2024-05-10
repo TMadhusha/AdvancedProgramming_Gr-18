@@ -55,6 +55,7 @@ export default function Addproduct() {
       await axios.post("http://localhost:8080/add-product", product);
             handleCancel();
             alert("The product was successfully added...");
+            navigate('/seller-home')
     //   navigate("/supplier");
     }
   };

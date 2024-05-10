@@ -17,6 +17,7 @@ import LoginCustomer from './loginAndReg/LoginCustomer.jsx';
 import CustomerReg from './loginAndReg/CUstomerReg.jsx'
 import AdminRegister from './loginAndReg/AdminReg.jsx';
 import LoginAdmin from './loginAndReg/LoginAdmin.jsx';
+import SellerHome from './Seller/sellerHome.jsx';
 
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
           <Route path="/register-customer" element={<CustomerReg />} />
           <Route path="/register-admin" element={<AdminRegister />} />
           <Route path="/login-admin" element={<LoginAdmin/>} />
+          <Route path="/seller-home" element={<SellerHome/>} />
         </Routes>
     </BrowserRouter>
   );

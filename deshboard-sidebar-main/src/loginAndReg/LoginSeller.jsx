@@ -29,7 +29,7 @@ export default function LoginSeller() {
 
       if (response.status === 200) {
         alert("Login Successfull");
-        navigate("/edit-seller");
+        navigate("/seller-home");
       }
     } catch (error) {
       alert("Login failed: " + error.response.data);

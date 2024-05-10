@@ -30,12 +30,12 @@ public class InventoryController {
 
 
     @PostMapping("/add-product")
-    ResponseEntity<?> newProduct(@RequestBody Inventory newProduct) {
+    ResponseEntity<?> newProduct(@RequestBody Inventory newInventory) {
         // Check if the seller_id exists in the seller table
-        Optional<Seller> sellerOptional = Optional.ofNullable(sellerRepository.findSellerByEmail(newProduct.getEmail()));
+        Optional<Seller> sellerOptional = Optional.ofNullable(sellerRepository.findSellerByEmail(newInventory.getEmail()));
         if (sellerOptional.isPresent()) {
             // Save the product if the seller_id exists
-            Inventory savedProduct = inventoryRepository.save(newProduct);
+            Inventory savedProduct = inventoryRepository.save(newInventory);
             return ResponseEntity.ok(savedProduct);
         } else {
             // Return an error response if the seller_id doesn't exist

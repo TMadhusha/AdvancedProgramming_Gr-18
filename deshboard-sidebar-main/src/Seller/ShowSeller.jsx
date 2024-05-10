@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-
+import Sidebar from '../components/Sidebar';
 const Seller = () => {
   const [sellers, setSellers] = useState([]);
   useEffect(() => {
@@ -20,6 +20,7 @@ const Seller = () => {
 
   return (
     <div>
+        <Sidebar/>
       <div className='main-container '>
       </div>
       <div className='content-container '>
