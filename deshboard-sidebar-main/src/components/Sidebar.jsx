@@ -26,11 +26,11 @@ const Sidebar = ({ children }) => {
             name: "Register",
             subItems: [
                 {
-                    path: "/seller-register",
+                    path: "/sellerregistration",
                     name: "Seller"
                 },
                 {
-                    path: "/customer-register",
+                    path: "/customerregistration",
                     name: "Customer"
                 }
             ]
@@ -44,11 +44,11 @@ const Sidebar = ({ children }) => {
                     name: "Admin"
                 },
                 {
-                    path: "/seller-login",
+                    path: "/sellerlogin",
                     name: "Seller"
                 },
                 {
-                    path: "/customer",
+                    path: "/customerlogin",
                     name: "Customer"
                 }
             ]

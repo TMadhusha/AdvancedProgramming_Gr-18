@@ -14,6 +14,10 @@ import ProductDetails from './Admin/ProductDetails.jsx';
 import CxSeller from './Customer/CxSeller.jsx';
 import CxProducts from './Customer/CxProducts.jsx';
 import MyBids from './Customer/MyBids.jsx';
+import CustomerRegistration from './LoginsAndRegistration/CustomerRegistration.jsx';
+import SellerRegistration from './LoginsAndRegistration/SellerRegistration.jsx';
+import SellerLogin from './LoginsAndRegistration/SellerLogin.jsx';
+import CustomerLogin from './LoginsAndRegistration/CustomerLogin.jsx';
 
 const App = () => {
   return (
@@ -32,6 +36,10 @@ const App = () => {
           <Route path='/cx-seller' element={<CxSeller/>}/>
           <Route path='/cx-products' element={<CxProducts/>}/>
           <Route path='/my-bids' element={<MyBids/>}/>
+          <Route path='/customerregistration' element={<CustomerRegistration/>}/>
+          <Route path='/sellerregistration' element={<SellerRegistration/>}/>
+          <Route path='/sellerlogin' element={<SellerLogin/>}/>
+          <Route path='/customerlogin' element={<CustomerLogin/>}/>
         </Routes>
     </BrowserRouter>
   );

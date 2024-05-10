@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 public class Inventory {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private String pro_id;
     private String pro_name;
