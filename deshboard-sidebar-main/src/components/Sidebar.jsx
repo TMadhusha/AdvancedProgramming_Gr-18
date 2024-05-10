@@ -18,7 +18,7 @@ const Sidebar = ({ children }) => {
             name: "Product",
         },
         {
-            path: "/seller",
+            path: "/show-seller",
             name: "Seller",
         },
         {

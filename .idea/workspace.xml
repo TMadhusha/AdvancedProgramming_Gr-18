@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f7cc07e-3112-4db2-a723-0698ebebcab7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/deshboard-sidebar-main/src/loginAndReg/LoginAdmin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/deshboard-sidebar-main/src/loginAndReg/LoginAdmin.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deshboard-sidebar-main/src/loginAndReg/LoginCustomer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/deshboard-sidebar-main/src/loginAndReg/LoginCustomer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deshboard-sidebar-main/src/loginAndReg/LoginSeller.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/deshboard-sidebar-main/src/loginAndReg/LoginSeller.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deshboard-sidebar-main/src/loginAndReg/Reg.css" beforeDir="false" afterPath="$PROJECT_DIR$/deshboard-sidebar-main/src/loginAndReg/Reg.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deshboard-sidebar-main/src/loginAndReg/SellerRegister.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/deshboard-sidebar-main/src/loginAndReg/SellerRegister.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
