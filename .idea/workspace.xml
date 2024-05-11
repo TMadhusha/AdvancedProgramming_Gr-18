@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f7cc07e-3112-4db2-a723-0698ebebcab7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/seller_detail_backup.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/controller/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/controller/InventoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deshboard-sidebar-main/src/Product/ShowProduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/deshboard-sidebar-main/src/Product/ShowProduct.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/controller/SellerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/jewelry_ms/src/main/java/jwl/mis/jewelry_ms/controller/SellerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +149,7 @@
       <workItem from="1715104753482" duration="12739000" />
       <workItem from="1715196476268" duration="1449000" />
       <workItem from="1715239800686" duration="604000" />
-      <workItem from="1715328426348" duration="2080000" />
+      <workItem from="1715328426348" duration="5318000" />
     </task>
     <servers />
   </component>

@@ -17,9 +17,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 @RestController
@@ -27,15 +33,25 @@ import java.util.List;
 //@RequestMapping("/api/supplier")
 public class SellerController {
 
+// ORM :Done
+// Design patterns: Done
+//    Bean Scope: By default, Spring beans are singleton scoped. It means that Spring
+//    creates only one instance of a bean per container (application context) and shares that single
+//    instance throughout the application.
+//
+//    @Autowired Annotation: When you use the @Autowired annotation to inject dependencies into your controller,
+//    Spring ensures that it injects the same instance of the dependency into all components that require it.
+
     @Autowired
     private SellerRepository sellerRepository;
 
     @Autowired
     private SellerSessionRepository sellerSessionRepository;
 
+    private final ExecutorService executorService = Executors.newCachedThreadPool();
 
     @PostMapping("/register-seller")
-    Seller newSupplier(@RequestBody Seller newSeller) {
+    public Seller newSupplier(@RequestBody Seller newSeller) {
         // Check if the email already exists
         Seller existingSeller = sellerRepository.findSellerByEmail(newSeller.getEmail());
         if (existingSeller != null) {
@@ -43,43 +59,129 @@ public class SellerController {
             throw new SellerNotFoundException(email + " is already in use.");
         }
 
-        // If the email doesn't exist, save the new seller
-        System.out.println(newSeller);
-        return sellerRepository.save(newSeller);
+        // Save the new seller to the database and serialize it to a file concurrently
+        executorService.submit(() -> {
+            saveToDatabase(newSeller);
+            serializeToFile(newSeller);
+        });
+
+        return newSeller;
     }
 
-    @PostMapping("/seller-login")
-    public ResponseEntity<String> login(@RequestBody SellerLoginRequest loginRequest) {
-        String email = loginRequest.getEmail();
-        String password = loginRequest.getPassword();
+    private void saveToDatabase(Seller seller) {
+        // Save the new seller to the database
+        sellerRepository.save(seller);
+    }
 
-        // Find the seller by email
-        Seller seller = sellerRepository.findSellerByEmail(email);
-
-        if (seller == null || !seller.getPassword().equals(password)) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
-        } else {
-            // Generate session ID
-            String sessionId = UUID.randomUUID().toString();
-
-            // Save session data
-            SellerSession sellerSession = new SellerSession();
-            sellerSession.setSeller_id(seller.getSeller_id());
-            sellerSession.setUsername(seller.getUsername());
-            sellerSession.setRole(seller.getRole());
-            sellerSession.setPhonenumber(seller.getPhonenumber());
-            sellerSession.setAddress(seller.getAddress());
-            sellerSession.setEmail(seller.getEmail());
-            sellerSession.setPassword(seller.getPassword());
-            sellerSession.setDob(seller.getDob());
-
-            // Save session data to the repository
-            sellerSessionRepository.save(sellerSession);
-
-            // Return login successful message
-            return ResponseEntity.ok("Login successful");
+    private void serializeToFile(Seller seller) {
+        // Serialize the seller object to a file
+        try (FileOutputStream fos = new FileOutputStream("seller_detail_backup.ser");
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(seller);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+
+
+
+//    @PostMapping("/register-seller")
+//    Seller newSupplier(@RequestBody Seller newSeller) {
+//        // Check if the email already exists
+//        Seller existingSeller = sellerRepository.findSellerByEmail(newSeller.getEmail());
+//        if (existingSeller != null) {
+//            String email = existingSeller.getEmail();
+//            throw new SellerNotFoundException(email + " is already in use.");
+//        }
+//
+//        // If the email doesn't exist, save the new seller
+//        System.out.println(newSeller);
+//        return sellerRepository.save(newSeller);
+//
+//
+//    }
+
+
+
+
+
+
+
+
+
+
+
+        @PostMapping("/seller-login")
+        public CompletableFuture<ResponseEntity<String>> login(@RequestBody SellerLoginRequest loginRequest) {
+            String email = loginRequest.getEmail();
+            String password = loginRequest.getPassword();
+
+            // Perform authentication asynchronously
+            return CompletableFuture.supplyAsync(() -> authenticateSeller(email, password), executorService);
+        }
+
+        private ResponseEntity<String> authenticateSeller(String email, String password) {
+            // Find the seller by email
+            Seller seller = sellerRepository.findSellerByEmail(email);
+
+            if (seller == null || !seller.getPassword().equals(password)) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
+            } else {
+                // Generate session ID
+                String sessionId = UUID.randomUUID().toString();
+
+                // Save session data
+                SellerSession sellerSession = new SellerSession();
+                sellerSession.setSeller_id(seller.getSeller_id());
+                sellerSession.setUsername(seller.getUsername());
+                sellerSession.setRole(seller.getRole());
+                sellerSession.setPhonenumber(seller.getPhonenumber());
+                sellerSession.setAddress(seller.getAddress());
+                sellerSession.setEmail(seller.getEmail());
+                sellerSession.setPassword(seller.getPassword());
+                sellerSession.setDob(seller.getDob());
+
+                // Save session data to the repository
+                sellerSessionRepository.save(sellerSession);
+
+                // Return login successful message
+                return ResponseEntity.ok("Login successful");
+            }
+        }
+
+
+//    @PostMapping("/seller-login")
+//    public ResponseEntity<String> login(@RequestBody SellerLoginRequest loginRequest) {
+//        String email = loginRequest.getEmail();
+//        String password = loginRequest.getPassword();
+//
+//        // Find the seller by email
+//        Seller seller = sellerRepository.findSellerByEmail(email);
+//
+//        if (seller == null || !seller.getPassword().equals(password)) {
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
+//        } else {
+//            // Generate session ID
+//            String sessionId = UUID.randomUUID().toString();
+//
+//            // Save session data
+//            SellerSession sellerSession = new SellerSession();
+//            sellerSession.setSeller_id(seller.getSeller_id());
+//            sellerSession.setUsername(seller.getUsername());
+//            sellerSession.setRole(seller.getRole());
+//            sellerSession.setPhonenumber(seller.getPhonenumber());
+//            sellerSession.setAddress(seller.getAddress());
+//            sellerSession.setEmail(seller.getEmail());
+//            sellerSession.setPassword(seller.getPassword());
+//            sellerSession.setDob(seller.getDob());
+//
+//            // Save session data to the repository
+//            sellerSessionRepository.save(sellerSession);
+//
+//            // Return login successful message
+//            return ResponseEntity.ok("Login successful");
+//        }
+//    }
 
     //view all sellers
     @GetMapping("/get-seller")
