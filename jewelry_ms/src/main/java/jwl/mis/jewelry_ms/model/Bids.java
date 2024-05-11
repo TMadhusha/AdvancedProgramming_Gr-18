@@ -22,10 +22,10 @@ public class Bids {
     private Customer customer;
 
     private double bidPrice;
-    private double currentPrice;
 
     private LocalDate date;
 
 
-
+    public void setCurrentPrice(double bidAmount) {
+    }
 }
