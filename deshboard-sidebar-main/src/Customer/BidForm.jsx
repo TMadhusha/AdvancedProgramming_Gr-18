@@ -1,4 +1,3 @@
-// BidForm.jsx
 import React, { useState } from 'react';
 
 const BidForm = ({ currentPrice, productId, onSubmit }) => {
@@ -13,17 +12,7 @@ const BidForm = ({ currentPrice, productId, onSubmit }) => {
         }
         // Submit bid
         try {
-            const response = await fetch('http://localhost:8080/bid', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ productId, bidAmount: parseFloat(bidAmount) }),
-            });
-            if (!response.ok) {
-                throw new Error('Failed to submit bid');
-            }
-            await onSubmit(parseFloat(bidAmount));
+            await onSubmit(productId, bidAmount);
             setBidAmount('');
             console.log('Bid submitted successfully!');
         } catch (error) {
@@ -44,7 +33,7 @@ const BidForm = ({ currentPrice, productId, onSubmit }) => {
                 onChange={(e) => setBidAmount(e.target.value)}
                 required
             />
-            <button type="submit">Place Bid</button>
+            <button type="submitBid" className='submitBid'>Place Bid</button>
         </form>
     );
 };

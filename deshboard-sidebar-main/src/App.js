@@ -14,6 +14,7 @@ import ProductDetails from './Admin/ProductDetails.jsx';
 import CxSeller from './Customer/CxSeller.jsx';
 import CxProducts from './Customer/CxProducts.jsx';
 import MyBids from './Customer/MyBids.jsx';
+import MyAccount from './Customer/MyAccount.jsx';
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
           <Route path='/cx-seller' element={<CxSeller/>}/>
           <Route path='/cx-products' element={<CxProducts/>}/>
           <Route path='/my-bids' element={<MyBids/>}/>
+          <Route path='/account' element={<MyAccount/>}/>
         </Routes>
     </BrowserRouter>
   );

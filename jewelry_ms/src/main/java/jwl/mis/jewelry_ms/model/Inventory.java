@@ -1,9 +1,10 @@
 package jwl.mis.jewelry_ms.model;
 
 import jakarta.persistence.*;
-import jwl.mis.jewelry_ms.model.Seller;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,6 +18,8 @@ public class Inventory {
     private String description;
     private String author;
     private double startingPrice;
+    private double currentPrice;
+
     @Lob
     @Column(columnDefinition = "LONGBLOB")
     private byte[] image;

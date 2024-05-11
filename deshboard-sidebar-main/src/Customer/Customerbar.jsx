@@ -11,11 +11,6 @@ export default function Customerbar() {
 
     const menuItem = [
         {
-            path: "/home",
-            name: "Home",
-            icon: <FaHome /> // Home icon
-        },
-        {
             path: "/cx-seller",
             name: "Seller",
             icon: <FaShoppingCart /> // Shopping cart icon
@@ -36,7 +31,7 @@ export default function Customerbar() {
             icon: <FaUser /> // User icon
         },
         {
-            path: "/logout",
+            path: "/",
             name: "Logout",
             icon: <FaSignOutAlt /> // Logout icon
         }

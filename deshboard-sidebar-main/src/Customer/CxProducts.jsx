@@ -1,4 +1,3 @@
-// CxProducts.jsx
 import React, { useState, useEffect } from 'react';
 import Customerbar from './Customerbar';
 import BidForm from './BidForm';
@@ -6,7 +5,7 @@ import BidForm from './BidForm';
 export default function CxProducts() {
     const [products, setProducts] = useState([]);
     const [error, setError] = useState(null);
-    const [selectedProductId, setSelectedProductId] = useState(null); // State to track selected product ID
+    const [selectedProductId, setSelectedProductId] = useState(null); // New state to track selected product for bidding
 
     useEffect(() => {
         fetchProducts();
@@ -27,45 +26,57 @@ export default function CxProducts() {
     };
 
     const handleBid = async (productId, bidAmount) => {
-        // Update the current price of the product with the new bid amount
-        const updatedProducts = products.map(product => {
-            if (product.pro_id === productId) {
-                return { ...product, startingPrice: bidAmount };
+        try {
+            const response = await fetch('http://localhost:8080/bid', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ productId, bidAmount: parseFloat(bidAmount) }),
+            });
+            if (!response.ok) {
+                throw new Error('Failed to submit bid');
             }
-            return product;
-        });
-        setProducts(updatedProducts);
-        setSelectedProductId(null);
+            // Fetch updated product data after successful bid submission
+            await fetchProducts();
+            console.log('Bid submitted successfully!');
+        } catch (error) {
+            console.error('Error submitting bid:', error.message);
+            // Handle error
+        }
+    };
+
+    // Function to toggle selected product for bidding
+    const toggleBidForm = (productId) => {
+        setSelectedProductId(productId === selectedProductId ? null : productId);
     };
 
     return (
-        <div>
+        <div className="cx-products-container">
             <Customerbar />
             <div className="product-list">
                 <h2>Bidding Products</h2>
-                {error && <p>{error}</p>}
-                <ul>
+                {error && <p className="error-message">{error}</p>}
+                <ul className="product-ul">
                     {products.map((product) => (
-                        <li key={product.pro_id}>
-                            <div>
-                                <img className="thumbnail" src={`data:image/jpeg;base64,${product.image}`} alt="product" />
+                        <li key={product.pro_id} className="product-li">
+                            <div className="product-info-container">
+                                <img className="product-thumbnail" src={`data:image/jpeg;base64,${product.image}`} alt="product" />
+                                <div className="product-details">
+                                    <h3 className="product-name">{product.name}</h3>
+                                    <p className="product-description">{product.description}</p>
+                                    <p className="product-seller">Seller: {product.seller.user_name}</p>
+                                    <p className="product-price">Starting Price: ${product.startingPrice}</p>
+                                    <button className="bid-button" onClick={() => toggleBidForm(product.pro_id)}>Bid</button> {/* Bid button */}
+                                </div>
                             </div>
-                            <div>
-                                <h3>{product.name}</h3>
-                                <p className="product-info">{product.description}</p>
-                                {/* Change to display seller's user_name */}
-                                <p className="product-info">Seller: {product.seller.user_name}</p>
-                                <p className="product-info">Starting Price: ${product.startingPrice}</p>
-                                <button className="bid-button" onClick={() => setSelectedProductId(product.pro_id)}>Bid Now</button>
-                                {/* Conditionally render BidForm component based on selectedProductId */}
-                                {selectedProductId === product.pro_id && (
-                                    <BidForm
-                                        productId={product.pro_id}
-                                        currentPrice={product.startingPrice} // You can use the starting price or any other relevant price
-                                        onSubmit={(bidAmount) => handleBid(product.pro_id, bidAmount)}
-                                    />
-                                )}
-                            </div>
+                            {selectedProductId === product.pro_id && ( // Conditionally render bid form
+                                <BidForm
+                                    productId={product.pro_id}
+                                    currentPrice={product.currentPrice} 
+                                    onSubmit={handleBid}
+                                />
+                            )}
                         </li>
                     ))}
                 </ul>
