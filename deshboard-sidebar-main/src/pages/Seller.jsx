@@ -43,7 +43,7 @@ export default function Seller() {
                         {sellers.map((seller) => (
                             <tr key={seller.seller_id}>
                                 <td><img className="thumbnail" src={`data:image/jpeg;base64,${seller.sellerIcon}`} alt="seller" /></td>
-                                <td>{seller.user_name}</td>
+                                <td>{seller.userName}</td>
                                 <td>{seller.description}</td>
                                 
                                

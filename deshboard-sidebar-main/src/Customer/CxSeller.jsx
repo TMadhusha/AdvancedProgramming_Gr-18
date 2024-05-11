@@ -4,15 +4,15 @@ import { useLocation } from 'react-router-dom';
 
 export default function CxSeller() {
     //storing the username
-    const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState('');
 
-    useEffect(() => {
-        // Retrieve username from sessionStorage
-        const storedUserName = sessionStorage.getItem('userName');
-        if (storedUserName) {
-            setUserName(storedUserName);
-        }
-    }, []);
+  useEffect(() => {
+      // Retrieve username from sessionStorage
+      const storedUserName = sessionStorage.getItem('userName');
+      if (storedUserName) {
+          setUserName(storedUserName);
+      }
+  }, []);
 
     const [sellers, setSellers] = useState([]);
     const [error, setError] = useState(null);
@@ -37,9 +37,9 @@ export default function CxSeller() {
         }
     };
 
-    const fetchProductsForSeller = async (sellerId) => {
+    const fetchProductsForSeller = async (seller_id) => {
         try {
-            const response = await fetch(`http://localhost:8080/inventory/seller?sellerId=${sellerId}`);
+            const response = await fetch(`http://localhost:8080/inventory/seller?seller_id=${seller_id}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch product data');
             }
@@ -80,7 +80,7 @@ export default function CxSeller() {
                             <React.Fragment key={seller.seller_id}>
                                 <tr onClick={() => handleRowClick(seller)}>
                                     <td><img className="thumbnail" src={`data:image/jpeg;base64,${seller.sellerIcon}`} alt="seller" /></td>
-                                    <td>{seller.user_name}</td>
+                                    <td>{seller.userName}</td>
                                     <td>{seller.description}</td>
                                 </tr>
                                 {selectedSeller === seller && (
@@ -93,7 +93,7 @@ export default function CxSeller() {
                                                         <li key={product.pro_id}>
                                                             <img className="product-thumbnail" src={`data:image/jpeg;base64,${product.image}`} alt="product" />
                                                             <div>
-                                                                <h3>{product.name}</h3>
+                                                                <h3>{product.pro_name}</h3>
                                                                 <p>{product.description}</p>
                                                                 <p>Starting Price: {product.startingPrice}</p>
                                                             </div>
