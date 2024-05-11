@@ -1,8 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import Customerbar from './Customerbar';
 import BidForm from './BidForm';
+import axios from 'axios';
 
 export default function CxProducts() {
+    //storing the username
+    const [userName, setUserName] = useState('');
+
+    useEffect(() => {
+        // Retrieve username from sessionStorage
+        const storedUserName = sessionStorage.getItem('userName');
+        if (storedUserName) {
+            setUserName(storedUserName);
+        }
+    }, []);
+
+
+
     const [products, setProducts] = useState([]);
     const [error, setError] = useState(null);
     const [selectedProductId, setSelectedProductId] = useState(null); // New state to track selected product for bidding
@@ -52,23 +66,32 @@ export default function CxProducts() {
     };
 
     return (
-        <div className="cx-products-container">
-            <Customerbar />
+        <div>
+            <Customerbar userName={userName}/>
             <div className="product-list">
                 <h2>Bidding Products</h2>
                 {error && <p className="error-message">{error}</p>}
                 <ul className="product-ul">
                     {products.map((product) => (
-                        <li key={product.pro_id} className="product-li">
-                            <div className="product-info-container">
-                                <img className="product-thumbnail" src={`data:image/jpeg;base64,${product.image}`} alt="product" />
-                                <div className="product-details">
-                                    <h3 className="product-name">{product.name}</h3>
-                                    <p className="product-description">{product.description}</p>
-                                    <p className="product-seller">Seller: {product.seller.user_name}</p>
-                                    <p className="product-price">Starting Price: ${product.startingPrice}</p>
-                                    <button className="bid-button" onClick={() => toggleBidForm(product.pro_id)}>Bid</button> {/* Bid button */}
-                                </div>
+                        <li key={product.pro_id}>
+                            <div>
+                                <img className="thumbnail" src={`data:image/jpeg;base64,${product.image}`} alt="product" />
+                            </div>
+                            <div>
+                                <h3>{product.pro_name}</h3>
+                                <p className="product-info">{product.description}</p>
+                                {/* Change to display seller's user_name */}
+                                <p className="product-info">Seller: {product.seller ? product.seller.user_name :"I don't know"}</p>
+                                <p className="product-info">Starting Price: ${product.startingPrice}</p>
+                                <button className="bid-button" onClick={() => setSelectedProductId(product.pro_id)}>Bid Now</button>
+                                {/* Conditionally render BidForm component based on selectedProductId */}
+                                {selectedProductId === product.pro_id && (
+                                    <BidForm
+                                        productId={product.pro_id}
+                                        currentPrice={product.startingPrice} // You can use the starting price or any other relevant price
+                                        onSubmit={(bidAmount) => handleBid(product.pro_id, bidAmount)}
+                                    />
+                                )}
                             </div>
                             {selectedProductId === product.pro_id && ( // Conditionally render bid form
                                 <BidForm

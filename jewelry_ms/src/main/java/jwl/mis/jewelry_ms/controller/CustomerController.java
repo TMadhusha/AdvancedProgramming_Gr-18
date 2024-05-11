@@ -5,6 +5,8 @@ import jwl.mis.jewelry_ms.model.Customer;
 import jwl.mis.jewelry_ms.repository.CustomerRepository;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -52,5 +54,15 @@ public class CustomerController {
         }
         customerRepository.deleteById(cus_id);
         return "Customer with id "+ cus_id +"has been deleted success.";
+    }
+
+    @PostMapping("/customerlogin")
+    public ResponseEntity<String> loginCustomer(@RequestBody CustomerLoginRequest request) {
+        Customer customer = customerRepository.findByUserNameAndPassword(request.getUserName(), request.getPassword());
+        if (customer != null) {
+            return ResponseEntity.ok("Login successful");
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
+        }
     }
 }
