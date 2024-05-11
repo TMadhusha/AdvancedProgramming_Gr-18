@@ -6,7 +6,6 @@ import Product from './pages/Product.jsx';
 import Customer from './pages/Customer.jsx';
 import Home from './pages/Home.jsx';
 import Seller from './pages/Seller.jsx';
-import Dashborard from './pages/Dashborard.jsx';
 import Bids from './pages/Bids.jsx';
 import CustomerDetails from './Admin/CustomerDetails.jsx';
 import SellerDetails from './Admin/SellerDetails.jsx';
@@ -23,6 +22,7 @@ import AddProducts from './Seller/AddProducts.jsx';
 import MyAccount from './Seller/MyAccount.jsx';
 import Account from './Customer/Account.jsx';
 import AdminLogin from './LoginsAndRegistration/AdminLogin.jsx';
+import Allbids from './Admin/Allbids.jsx';
 
 const App = () => {
   return (
@@ -33,7 +33,6 @@ const App = () => {
           <Route path="/customer" element={<Customer />} />
           <Route path="/seller" element={<Seller />} />
           <Route path="/product" element={<Product />} />
-          <Route path='/dashborard' element={<Dashborard/>}/>
           <Route path='/bids' element={<Bids/>}/>
           <Route path='/customerdetails' element={<CustomerDetails/>}/>
           <Route path='/sellerdetails' element={<SellerDetails/>}/>
@@ -50,6 +49,7 @@ const App = () => {
           <Route path='/addproducts' element={<AddProducts/>}/>
           <Route path='/myaccount' element={<MyAccount/>}/>
           <Route path='/account' element={<Account/>}/>
+          <Route path='/allbids' element={<Allbids/>}/>
         </Routes>
     </BrowserRouter>
   );

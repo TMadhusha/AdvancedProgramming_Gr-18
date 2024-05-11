@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Adminbar from '../components/Adminbar'
+import Adminbar from '../components/Adminbar';
 
-export default function () {
-  //storing the username
+export default function Allbids() {
+    //storing the username
   const [userName, setUserName] = useState('');
 
   useEffect(() => {
@@ -13,15 +13,16 @@ export default function () {
       }
   }, []);
 
+    const [bids,setBids]=useState();
+
 
   return (
     <div>
         <div>
             <Adminbar userName={userName}/>
         </div>
-        <div>
-            Welcome to Admin Dashboard
-        </div>
+        Allbids
+
     </div>
   )
 }

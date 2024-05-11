@@ -52,22 +52,11 @@ export default function MyBids() {
                 <input 
                     type="text" 
                     placeholder="Enter Customer ID" 
-                    value={cus_id} 
-                    onChange={handleFilterChange}
+                    //value={cus_id} 
+                    //onChange={handleFilterChange}
                     className="customer-id-filter"
                 />
-                {error && <p className="my-bids-error-message">{error}</p>} {/* Apply a class for error messages */}
-                <ul className="my-bids-list"> {/* Apply a class for the list of bids */}
-                    {bids.map((bid) => (
-                        <li key={bid.bid_id} className="my-bids-item"> {/* Apply a class for each bid item */}
-                            <p className="my-bids-bid-id">Bid ID: {bid.bid_id}</p> {/* Apply a class for bid ID */}
-                            <p className="my-bids-bid-price">Bid Price: {bid.bidPrice}</p> {/* Apply a class for bid price */}
-                            <p className="my-bids-current-price">Current Price: {bid.currentPrice}</p> {/* Apply a class for current price */}
-                            <p className="my-bids-bid-date">Date: {bid.date}</p> 
-                            <p className="my-bids-customer-id">Customer ID: {bid.customer.cus_id}</p>
-                        </li>
-                    ))}
-                </ul>
+               
             </div>
         </div>
         </div>

@@ -17,7 +17,7 @@ export default function AdminLogin() {
             const response = await axios.post("http://localhost:8080/adminlogin", { userName, password });
             if (response.status === 200) {
                 sessionStorage.setItem('userName', userName);
-                navigate("/dashborard");
+                navigate("/bids");
                 // Login successful, handle redirection or other actions
             }
         } catch (error) {
