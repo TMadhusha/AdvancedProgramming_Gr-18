@@ -10,12 +10,8 @@ export default function Adminbar({userName}) {
 
     const menuItem=[
         {
-            path:"/dashborard",
-            name:"Dashboard",
-        },
-        {
-            path:"/bids",
-            name:"Bids",
+            path:"/allbids",
+            name:"All Bids",
         },
         {
             path:"/addNew",

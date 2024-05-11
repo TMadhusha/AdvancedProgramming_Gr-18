@@ -5,15 +5,15 @@ import axios from 'axios';
 
 export default function CxProducts() {
     //storing the username
-    const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState('');
 
-    useEffect(() => {
-        // Retrieve username from sessionStorage
-        const storedUserName = sessionStorage.getItem('userName');
-        if (storedUserName) {
-            setUserName(storedUserName);
-        }
-    }, []);
+  useEffect(() => {
+      // Retrieve username from sessionStorage
+      const storedUserName = sessionStorage.getItem('userName');
+      if (storedUserName) {
+          setUserName(storedUserName);
+      }
+  }, []);
 
 
 
@@ -81,17 +81,11 @@ export default function CxProducts() {
                                 <h3>{product.pro_name}</h3>
                                 <p className="product-info">{product.description}</p>
                                 {/* Change to display seller's user_name */}
-                                <p className="product-info">Seller: {product.seller ? product.seller.user_name :"I don't know"}</p>
+                                <p className="product-info">Seller: {product.seller ? product.seller.userName :userName}</p>
                                 <p className="product-info">Starting Price: ${product.startingPrice}</p>
                                 <button className="bid-button" onClick={() => setSelectedProductId(product.pro_id)}>Bid Now</button>
                                 {/* Conditionally render BidForm component based on selectedProductId */}
-                                {selectedProductId === product.pro_id && (
-                                    <BidForm
-                                        productId={product.pro_id}
-                                        currentPrice={product.startingPrice} // You can use the starting price or any other relevant price
-                                        onSubmit={(bidAmount) => handleBid(product.pro_id, bidAmount)}
-                                    />
-                                )}
+                               
                             </div>
                             {selectedProductId === product.pro_id && ( // Conditionally render bid form
                                 <BidForm

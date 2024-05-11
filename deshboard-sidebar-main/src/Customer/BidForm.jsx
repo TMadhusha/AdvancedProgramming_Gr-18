@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const BidForm = ({ currentPrice, productId, onSubmit }) => {
+ 
     const [bidAmount, setBidAmount] = useState('');
 
     const handleSubmit = async (event) => {

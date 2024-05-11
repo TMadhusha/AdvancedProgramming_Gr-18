@@ -19,7 +19,7 @@ public class InventoryController {
 
     @Autowired
     private InventoryRepository inventoryRepository;
-
+    @Autowired
     private final SellerRepository sellerRepository;
 
     public InventoryController(SellerRepository sellerRepository, InventoryRepository inventoryRepository) {
@@ -27,6 +27,7 @@ public class InventoryController {
         this.inventoryRepository = inventoryRepository;
     }
 
+    //add products to inventory
     @PostMapping("/inventory")
     Inventory newInventory(@RequestParam("image") MultipartFile image, @RequestParam("pro_id") String pro_id, @RequestParam("pro_name") String pro_name, @RequestParam("description") String description, @RequestParam("author") String author, @RequestParam("startingPrice") String startingPrice) {
         try {
@@ -45,25 +46,28 @@ public class InventoryController {
         }
     }
 
+    //view inventory products
     @GetMapping("/inventory")
     public List<Inventory> getAllInventory() {
         // Retrieve all inventory items
         return inventoryRepository.findAll();
     }
 
-    @GetMapping("/inventory/{item_id}")
-    Inventory getInventoryByItemId(@PathVariable String item_id) throws InterruptedException {
+    //get product to update using specific id
+    @GetMapping("/inventory/{pro_id}")
+    Inventory getInventoryByProId(@PathVariable String pro_id) throws InterruptedException {
         Inventory[] result = new Inventory[1];
         Thread thread = new Thread(() -> {
             // Perform the database operation in the new thread
-            result[0] = inventoryRepository.findById(item_id)
-                    .orElseThrow(() -> new InventoryNotFoundException(item_id));
+            result[0] = inventoryRepository.findById(pro_id)
+                    .orElseThrow(() -> new InventoryNotFoundException(pro_id));
         });
         thread.start();
         thread.join(); // Wait for the thread to finish
         return result[0];
     }
 
+    //update the product using specific id
     @PutMapping("/inventory/{pro_id}")
     Inventory updateInventory(@RequestBody Inventory newInventory, @PathVariable String pro_id) {
         try {
@@ -84,6 +88,7 @@ public class InventoryController {
         }
     }
 
+    //delete product
     @DeleteMapping("/inventory/{pro_id}")
     String deleteInventory(@PathVariable String pro_id){
         if(!inventoryRepository.existsById(pro_id)){
