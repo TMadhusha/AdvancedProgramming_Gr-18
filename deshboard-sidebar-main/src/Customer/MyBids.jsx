@@ -14,35 +14,33 @@ export default function MyBids() {
     }, []);
 
     const [bids, setBids] = useState([]);
-    const [error, setError] = useState(null);
-    const [cus_id, setCustomerIdFilter] = useState('');
-  
+    // State to handle loading state
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
+        // Function to fetch bids from backend
+        const fetchBids = async () => {
+            try {
+                const response = await fetch('http://localhost:8080/bids');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch bids');
+                }
+                const data = await response.json();
+                setBids(data);
+                setLoading(false); // Set loading to false once data is fetched
+            } catch (error) {
+                console.error('Error fetching bids:', error);
+            }
+        };
+
+        // Call fetchBids function when component mounts
         fetchBids();
+
+        // Clean up function
+        return () => {
+            // Cleanup code (if any)
+        };
     }, []);
-
-    const fetchBids = async () => {
-        try {
-            let apiUrl = 'http://localhost:8080/bids';
-          
-            if (cus_id) {
-                apiUrl += 'http://localhost:8080/customer/${cus_id}';
-            }
-            const response = await fetch(apiUrl);
-            if (!response.ok) {
-                throw new Error('Failed to fetch bid data');
-            }
-            const data = await response.json();
-            setBids(data);
-        } catch (error) {
-            console.error('Error fetching bid data:', error);
-            setError('Failed to fetch bid data. Please try again later.');
-        }
-    };
-
-    const handleFilterChange = (event) => {
-        setCustomerIdFilter(event.target.value);
-    };
 
     return (
       <div>

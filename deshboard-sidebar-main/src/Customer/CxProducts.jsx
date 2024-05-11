@@ -1,4 +1,3 @@
-// CxProducts.jsx
 import React, { useState, useEffect } from 'react';
 import Customerbar from './Customerbar';
 import BidForm from './BidForm';
@@ -20,7 +19,7 @@ export default function CxProducts() {
 
     const [products, setProducts] = useState([]);
     const [error, setError] = useState(null);
-    const [selectedProductId, setSelectedProductId] = useState(null); // State to track selected product ID
+    const [selectedProductId, setSelectedProductId] = useState(null); // New state to track selected product for bidding
 
     useEffect(() => {
         fetchProducts();
@@ -41,15 +40,29 @@ export default function CxProducts() {
     };
 
     const handleBid = async (productId, bidAmount) => {
-        // Update the current price of the product with the new bid amount
-        const updatedProducts = products.map(product => {
-            if (product.pro_id === productId) {
-                return { ...product, startingPrice: bidAmount };
+        try {
+            const response = await fetch('http://localhost:8080/bid', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ productId, bidAmount: parseFloat(bidAmount) }),
+            });
+            if (!response.ok) {
+                throw new Error('Failed to submit bid');
             }
-            return product;
-        });
-        setProducts(updatedProducts);
-        setSelectedProductId(null);
+            // Fetch updated product data after successful bid submission
+            await fetchProducts();
+            console.log('Bid submitted successfully!');
+        } catch (error) {
+            console.error('Error submitting bid:', error.message);
+            // Handle error
+        }
+    };
+
+    // Function to toggle selected product for bidding
+    const toggleBidForm = (productId) => {
+        setSelectedProductId(productId === selectedProductId ? null : productId);
     };
 
     return (
@@ -57,8 +70,8 @@ export default function CxProducts() {
             <Customerbar userName={userName}/>
             <div className="product-list">
                 <h2>Bidding Products</h2>
-                {error && <p>{error}</p>}
-                <ul>
+                {error && <p className="error-message">{error}</p>}
+                <ul className="product-ul">
                     {products.map((product) => (
                         <li key={product.pro_id}>
                             <div>
@@ -80,6 +93,13 @@ export default function CxProducts() {
                                     />
                                 )}
                             </div>
+                            {selectedProductId === product.pro_id && ( // Conditionally render bid form
+                                <BidForm
+                                    productId={product.pro_id}
+                                    currentPrice={product.currentPrice} 
+                                    onSubmit={handleBid}
+                                />
+                            )}
                         </li>
                     ))}
                 </ul>

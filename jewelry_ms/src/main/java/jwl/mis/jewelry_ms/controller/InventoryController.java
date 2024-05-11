@@ -2,7 +2,9 @@ package jwl.mis.jewelry_ms.controller;
 
 import jwl.mis.jewelry_ms.exception.InventoryNotFoundException;
 import jwl.mis.jewelry_ms.model.Inventory;
+import jwl.mis.jewelry_ms.model.Seller;
 import jwl.mis.jewelry_ms.repository.InventoryRepository;
+import jwl.mis.jewelry_ms.repository.SellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,11 +14,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class InventoryController {
 
     @Autowired
     private InventoryRepository inventoryRepository;
+
+    private final SellerRepository sellerRepository;
+
+    public InventoryController(SellerRepository sellerRepository, InventoryRepository inventoryRepository) {
+        this.sellerRepository = sellerRepository;
+        this.inventoryRepository = inventoryRepository;
+    }
 
     @PostMapping("/inventory")
     Inventory newInventory(@RequestParam("image") MultipartFile image, @RequestParam("pro_id") String pro_id, @RequestParam("pro_name") String pro_name, @RequestParam("description") String description, @RequestParam("author") String author, @RequestParam("startingPrice") String startingPrice) {
@@ -85,3 +94,4 @@ public class InventoryController {
     }
 
 }
+
