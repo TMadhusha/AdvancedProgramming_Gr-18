@@ -4,6 +4,7 @@ import  jwl.mis.jewelry_ms.Models.AdminLoginRequest;
 import jwl.mis.jewelry_ms.exception.UserNotFoundException;
 import jwl.mis.jewelry_ms.model.Admin;
 
+import jwl.mis.jewelry_ms.model.Seller;
 import jwl.mis.jewelry_ms.repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,23 +36,16 @@ public class AdminController {
 
 
     // Check if username and password match
-    @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody AdminLoginRequest loginRequest) {
-        String username = loginRequest.getUsername();
-        String password = loginRequest.getPassword();
-
-        // Find the admin by username
-        Admin admin = adminRepository.findAdminByUsername(username);
-
-        if (admin == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
-        } else {
-            if (admin.getPassword().equals(password)) {
-                return ResponseEntity.ok("Login successful");
-            } else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
-            }
+    @PostMapping("/adminlogin")
+    public ResponseEntity<String> loginSeller(@RequestBody SellerLoginRequest request ){
+        Admin admin=adminRepository.findByUserNameAndPassword(request.getUserName(), request.getPassword());
+        if(admin!=null){
+            return ResponseEntity.ok("Login Succssfull");
         }
+        else{
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
+        }
+
     }
 
 }

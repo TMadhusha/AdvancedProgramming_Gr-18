@@ -1,20 +1,16 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { FaUser, FaShoppingCart, FaProductHunt, FaLock, FaHome, FaSignOutAlt } from 'react-icons/fa'; // Import icons from react-icons library
+import axios from 'axios';
 
-export default function Customerbar() {
+export default function Customerbar({userName}) {
     const [openSubItemIndex, setOpenSubItemIndex] = useState(null);
-
+    
     const toggleSubMenu = (index) => {
         setOpenSubItemIndex(openSubItemIndex === index ? null : index);
     };
 
     const menuItem = [
-        {
-            path: "/home",
-            name: "Home",
-            icon: <FaHome /> // Home icon
-        },
         {
             path: "/cx-seller",
             name: "Seller",
@@ -36,7 +32,7 @@ export default function Customerbar() {
             icon: <FaUser /> // User icon
         },
         {
-            path: "/logout",
+            path: "/",
             name: "Logout",
             icon: <FaSignOutAlt /> // Logout icon
         }
@@ -46,7 +42,7 @@ export default function Customerbar() {
         <div className="container">
             <div className="sidebar">
                 <div className="top_section">
-                    <h1>Customer</h1> {/* Update title to "Customer" */}
+                    <h1>Welcome {userName}</h1> {/* Update title to "Customer" */}
                     <div className='container' style={{ gap: "20px", paddingLeft: "32%" }}>
                         {menuItem.map((item, index) => (
                             <div key={index}>

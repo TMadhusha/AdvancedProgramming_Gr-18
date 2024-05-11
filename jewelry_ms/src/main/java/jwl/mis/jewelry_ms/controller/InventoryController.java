@@ -1,5 +1,6 @@
 package jwl.mis.jewelry_ms.controller;
 
+import jwl.mis.jewelry_ms.exception.InventoryNotFoundException;
 import jwl.mis.jewelry_ms.model.Inventory;
 import jwl.mis.jewelry_ms.repository.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +34,6 @@ public class InventoryController {
             e.printStackTrace();
             return null;
         }
-    public Inventory newInventory(@RequestBody Inventory newInventory) {
-        // Save the new inventory item
-        return inventoryRepository.save(newInventory);
     }
 
     @GetMapping("/inventory")

@@ -2,41 +2,25 @@ package jwl.mis.jewelry_ms.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class AdminLogin {
     //Fields
     @Id
-    @GeneratedValue
-    private Long id;
-    private String ad_Id;
-    private String ad_Uname;
-    private  String ad_Pwd;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long admin_id;
+    private String username;
+    private String password;
+    private String email;
+    private String mobile;
 
-    //getter and setters
 
-    public String getAd_Id() {
-        return ad_Id;
-    }
 
-    public void setAd_Id(String ad_Id) {
-        this.ad_Id = ad_Id;
-    }
 
-    public String getAd_Uname() {
-        return ad_Uname;
-    }
-
-    public void setAd_Uname(String ad_Uname) {
-        this.ad_Uname = ad_Uname;
-    }
-
-    public String getAd_Pwd() {
-        return ad_Pwd;
-    }
-
-    public void setAd_Pwd(String ad_Pwd) {
-        this.ad_Pwd = ad_Pwd;
-    }
 }

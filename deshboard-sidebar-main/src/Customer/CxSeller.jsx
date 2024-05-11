@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Customerbar from './Customerbar';
+import { useLocation } from 'react-router-dom';
 
 export default function CxSeller() {
+    //storing the username
+    const [userName, setUserName] = useState('');
+
+    useEffect(() => {
+        // Retrieve username from sessionStorage
+        const storedUserName = sessionStorage.getItem('userName');
+        if (storedUserName) {
+            setUserName(storedUserName);
+        }
+    }, []);
+
     const [sellers, setSellers] = useState([]);
     const [error, setError] = useState(null);
 
@@ -25,7 +37,7 @@ export default function CxSeller() {
 
     return (
         <div>
-            <Customerbar />
+            <Customerbar userName={userName} />
             <div className="seller-table">
                 <h2>Sellers</h2>
                 {error && <p>{error}</p>}

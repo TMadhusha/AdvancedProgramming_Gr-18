@@ -2,6 +2,17 @@ import React, { useState, useEffect } from 'react';
 import Customerbar from './Customerbar';
 
 export default function MyBids() {
+    //storing the username
+    const [userName, setUserName] = useState('');
+
+    useEffect(() => {
+        // Retrieve username from sessionStorage
+        const storedUserName = sessionStorage.getItem('userName');
+        if (storedUserName) {
+            setUserName(storedUserName);
+        }
+    }, []);
+
     const [bids, setBids] = useState([]);
     const [error, setError] = useState(null);
     const [cus_id, setCustomerIdFilter] = useState('');
@@ -35,7 +46,7 @@ export default function MyBids() {
 
     return (
       <div>
-        <Customerbar/>
+        <Customerbar userName={userName}/>
         <div className="my-bids-container"> {/* Apply a container class */}
             <div className="my-bids-content"> {/* Apply a content class */}
                 <h2 className="my-bids-heading">My Bids</h2> {/* Apply a heading class */}
