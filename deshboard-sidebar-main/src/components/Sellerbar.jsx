@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 
-export default function Adminbar({userName}) {
+export default function Sellerbar({userName}) {
     const [openSubItemIndex, setOpenSubItemIndex] =useState(null);
 
     const toggleSubMenu = (index) => {
@@ -10,34 +10,16 @@ export default function Adminbar({userName}) {
 
     const menuItem=[
         {
-            path:"/dashborard",
-            name:"Dashboard",
+            path:"/seproducts",
+            name:"All Products",
         },
         {
-            path:"/bids",
-            name:"Bids",
+            path:"/addproducts",
+            name:"Add New Product",
         },
         {
-            path:"/addNew",
-            name:"Add New",
-            subItems:[
-                {
-                    path:'/customerdetails',
-                    name:"Customer",
-                },
-                {
-                    path:'/sellerdetails',
-                    name:"Seller",
-                },
-                {
-                    path:'/productdetails',
-                    name:"Products",
-                }
-            ]
-        },
-        {
-            path:"/changePwd",
-            name:"Change Password",
+            path:"/myaccount",
+            name:"My Account",
         },
         {
             path:"/home",
@@ -48,7 +30,7 @@ export default function Adminbar({userName}) {
     <div className="container">
            <div  className="sidebar">
                <div className="top_section">
-                <h1>Welcome {userName} </h1>
+                <h1>Welcome {userName}</h1>
                    <div className='container' style={{gap:"20px", paddingLeft:"32%"}}>
                    {menuItem.map((item, index) => (
                             <div key={index}>

@@ -18,6 +18,11 @@ import CustomerRegistration from './LoginsAndRegistration/CustomerRegistration.j
 import SellerRegistration from './LoginsAndRegistration/SellerRegistration.jsx';
 import SellerLogin from './LoginsAndRegistration/SellerLogin.jsx';
 import CustomerLogin from './LoginsAndRegistration/CustomerLogin.jsx';
+import SeProducts from './Seller/SeProducts.jsx';
+import AddProducts from './Seller/AddProducts.jsx';
+import MyAccount from './Seller/MyAccount.jsx';
+import Account from './Customer/Account.jsx';
+import AdminLogin from './LoginsAndRegistration/AdminLogin.jsx';
 
 const App = () => {
   return (
@@ -40,6 +45,11 @@ const App = () => {
           <Route path='/sellerregistration' element={<SellerRegistration/>}/>
           <Route path='/sellerlogin' element={<SellerLogin/>}/>
           <Route path='/customerlogin' element={<CustomerLogin/>}/>
+          <Route path='/adminlogin' element={<AdminLogin/>}/>
+          <Route path='/seproducts' element={<SeProducts/>}/>
+          <Route path='/addproducts' element={<AddProducts/>}/>
+          <Route path='/myaccount' element={<MyAccount/>}/>
+          <Route path='/account' element={<Account/>}/>
         </Routes>
     </BrowserRouter>
   );

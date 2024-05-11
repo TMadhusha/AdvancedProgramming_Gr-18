@@ -5,6 +5,17 @@ import AddProduct from './AddProduct';
 import UpdateProduct from './UpdateProduct';
 
 export default function ProductDetails() {
+    //storing the username
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+      // Retrieve username from sessionStorage
+      const storedUserName = sessionStorage.getItem('userName');
+      if (storedUserName) {
+          setUserName(storedUserName);
+      }
+  }, []);
+
     const [inventory, setInventory] = useState([]);
     const [showAddProduct, setShowAddProduct] = useState(false); // State to control the visibility of AddProduct popup
     const [showEditProduct,setEditProduct]=useState(false);
@@ -33,7 +44,7 @@ export default function ProductDetails() {
 
     return (
         <div>
-            <Adminbar />
+            <Adminbar userName={userName}/>
             <div>
                 <div>
                     <h1>Product Details</h1>

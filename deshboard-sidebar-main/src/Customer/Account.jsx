@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Adminbar from '../components/Adminbar'
+import Customerbar from './Customerbar';
 
-export default function () {
+export default function Account() {
   //storing the username
   const [userName, setUserName] = useState('');
 
@@ -13,15 +13,12 @@ export default function () {
       }
   }, []);
 
-
   return (
     <div>
         <div>
-            <Adminbar userName={userName}/>
+            <Customerbar userName={userName}/>
         </div>
-        <div>
-            Welcome to Admin Dashboard
-        </div>
+        Acconut
     </div>
   )
 }

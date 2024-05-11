@@ -40,7 +40,7 @@ const Sidebar = ({ children }) => {
             name: "Log In",
             subItems: [
                 {
-                    path: "/dashborard",
+                    path: "/adminlogin",
                     name: "Admin"
                 },
                 {
