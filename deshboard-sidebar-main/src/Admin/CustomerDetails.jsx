@@ -16,7 +16,7 @@ export default function CustomerDetails() {
       }
   }, []);
 
-  const [customer, setCustomer] = useState([]);
+  const [customers, setCustomer] = useState([]);
     const [showAddcustomer, setShowAddCustomer] = useState(false); // State to control the visibility of AddProduct popup
     const [showEditCustomer,setEditCustomer]=useState(false);
     const [selectedCustomerId, setSelectedCustomerId] = useState(null); 
@@ -70,7 +70,7 @@ export default function CustomerDetails() {
                         </thead>
                         <tbody>
                             {
-                                customer.map((customer, index) => (
+                                customers.map((customer, index) => (
                                     <tr key={index}>
                                         <td>{customer.cus_id}</td>
                                         <td>{customer.userName}</td>

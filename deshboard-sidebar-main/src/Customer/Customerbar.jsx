@@ -27,11 +27,6 @@ export default function Customerbar({userName}) {
             icon: <FaLock /> // Lock icon
         },
         {
-            path: "/account",
-            name: "My Account",
-            icon: <FaUser /> // User icon
-        },
-        {
             path: "/",
             name: "Logout",
             icon: <FaSignOutAlt /> // Logout icon

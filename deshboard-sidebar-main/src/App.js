@@ -48,7 +48,7 @@ const App = () => {
           <Route path='/seproducts' element={<SeProducts/>}/>
           <Route path='/addproducts' element={<AddProducts/>}/>
           <Route path='/myaccount' element={<MyAccount/>}/>
-          <Route path='/account' element={<Account/>}/>
+          <Route path='/account/' element={<Account/>}/>
           <Route path='/allbids' element={<Allbids/>}/>
         </Routes>
     </BrowserRouter>

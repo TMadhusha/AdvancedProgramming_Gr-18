@@ -7,11 +7,10 @@ export default function UpdateProduct({ pro_id, setEditProduct }) {
         pro_id:"",
         pro_name:"",
         description:"",
-        author:"",
         startingPrice:"",
     });
 
-    const{pro_name,description,author,startingPrice}=inventory;
+    const{pro_name,description,startingPrice}=inventory;
 
      // Function to fetch the last att_id from the backend and increment it
 //   const fetchLastProId = async () => {
@@ -75,10 +74,6 @@ const loadProduct=async ()=>{
                         <tr>
                             <td>Product Name:</td>
                             <td><input type='text' name="pro_name" placeholder='Product Name' value={pro_name} onChange={(e) => onChangeInput(e)}/></td>
-                        </tr>
-                        <tr>
-                            <td>Product Author:</td>
-                            <td><input type='text' name="author" placeholder='Author' value={author} onChange={(e) => onChangeInput(e)}/></td>
                         </tr>
                         <tr>
                             <td>Description:</td>

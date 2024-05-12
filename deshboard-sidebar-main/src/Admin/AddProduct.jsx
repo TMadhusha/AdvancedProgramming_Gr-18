@@ -4,17 +4,19 @@ import { useNavigate } from 'react-router-dom';
 
 export default function AddProduct() {
     let navigate=useNavigate();
+    const [seller_id, setSellerId] = useState("");
 
     const [inventory,setInventory]=useState({
         pro_id:"",
         pro_name:"",
         description:"",
-        author:"",
+        seller_id:"",
+        //author:"",
         startingPrice:"",
         image:null
     });
 
-    const{pro_id,pro_name,description,author,startingPrice,image}=inventory;
+    const{pro_id,pro_name,description,startingPrice,image}=inventory;
 
      // Function to fetch the last att_id from the backend and increment it
   const fetchLastProId = async () => {
@@ -27,6 +29,8 @@ export default function AddProduct() {
         ...prevInventory,
         pro_id: newProId
       }));
+      // Assuming seller_id is also fetched here
+    setSellerId(lastPro?.seller?.seller_id || "");
     } catch (error) {
       console.error("Error fetching last product id:", error);
     }
@@ -40,10 +44,11 @@ const onChangeInput = (e) => {
     if (e.target.name === "image") {
         // Set the image file to state
         setInventory({ ...inventory, image: e.target.files[0] });
-    } else {
-        // Set other input values to state
+    } else if (e.target.name === "seller_id") {
+        setSellerId(e.target.value);
+      } else {
         setInventory({ ...inventory, [e.target.name]: e.target.value });
-    }
+      }
 };
 
 
@@ -55,7 +60,8 @@ const onSubmit = async (e) => {
         formData.append("pro_id", pro_id);
         formData.append("pro_name", pro_name);
         formData.append("description", description);
-        formData.append("author", author);
+        formData.append("seller_id",seller_id);
+        //formData.append("author", author);
         formData.append("startingPrice", startingPrice);
         formData.append("image", image);
 
@@ -72,10 +78,11 @@ const onSubmit = async (e) => {
             pro_id: "",
             pro_name: "",
             description: "",
-            author: "",
+          //  author: "",
             startingPrice: "",
             image: null
         });
+        setSellerId("");
 
 
     } catch (error) {
@@ -87,7 +94,7 @@ const onSubmit = async (e) => {
   return (
     <div>
         <div>
-            <form onSubmit={(e) => onSubmit(e)}>
+            <form onSubmit={(e) => onSubmit(e)} className='forms'>
                 <table>
                     <tbody>
                         <tr>
@@ -99,9 +106,13 @@ const onSubmit = async (e) => {
                             <td><input type='text' name="pro_name" placeholder='Product Name' value={pro_name} onChange={(e) => onChangeInput(e)}/></td>
                         </tr>
                         <tr>
+                            <td>Author ID:</td>
+                            <td><input type='text' name="seller_id" placeholder='SellerID' value={seller_id} onChange={(e) => onChangeInput(e)}/></td>
+                        </tr>
+                        {/* <tr>
                             <td>Product Author:</td>
                             <td><input type='text' name="author" placeholder='Author' value={author} onChange={(e) => onChangeInput(e)}/></td>
-                        </tr>
+                        </tr> */}
                         <tr>
                             <td>Description:</td>
                             <td><input type='text' name="description" placeholder='Description' value={description} onChange={(e) => onChangeInput(e)}/></td>

@@ -57,8 +57,8 @@ export default function UpdateCustomer({cus_id,setEditCustomer}) {
                             <td><input type='number' name="cus_id" placeholder='cus_id' value={cus_id} onChange={(e) => onChangeInput(e)}/></td>
                         </tr>
                         <tr>
-                            <td>Seller/Company Name:</td>
-                            <td><input type='text' name="userName" placeholder='Seller/Company Name' value={userName} onChange={(e) => onChangeInput(e)}/></td>
+                            <td>Username:</td>
+                            <td><input type='text' name="userName" placeholder='Username' value={userName} onChange={(e) => onChangeInput(e)}/></td>
                         </tr>
                         <tr>
                             <td>Address:</td>
@@ -84,7 +84,6 @@ export default function UpdateCustomer({cus_id,setEditCustomer}) {
                             <td><button type='submit'>Update</button></td>
                             <td><button>Cancel</button></td>
                         </tr>
-
                     </tbody>
                 </table>
             </form>

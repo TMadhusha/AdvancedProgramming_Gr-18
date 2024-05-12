@@ -6,13 +6,18 @@ import axios from 'axios';
 export default function CxProducts() {
     //storing the username
   const [userName, setUserName] = useState('');
+  const [cus_id, setCustomerId] = useState('');
 
   useEffect(() => {
       // Retrieve username from sessionStorage
       const storedUserName = sessionStorage.getItem('userName');
+      const storedCustomerId = sessionStorage.getItem('cus_id');
       if (storedUserName) {
           setUserName(storedUserName);
       }
+      if (storedCustomerId) {
+        setCustomerId(storedCustomerId);
+    }
   }, []);
 
 
@@ -41,12 +46,17 @@ export default function CxProducts() {
 
     const handleBid = async (productId, bidAmount) => {
         try {
+            
             const response = await fetch('http://localhost:8080/bid', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ productId, bidAmount: parseFloat(bidAmount) }),
+                body: JSON.stringify({ 
+                    productId, 
+                    bidAmount: parseFloat(bidAmount),
+                    userName: userName// Include customer ID in the bid request
+                }),
             });
             if (!response.ok) {
                 throw new Error('Failed to submit bid');
@@ -54,6 +64,7 @@ export default function CxProducts() {
             // Fetch updated product data after successful bid submission
             await fetchProducts();
             console.log('Bid submitted successfully!');
+            window.alert("Bid submitted successfully!")
         } catch (error) {
             console.error('Error submitting bid:', error.message);
             // Handle error

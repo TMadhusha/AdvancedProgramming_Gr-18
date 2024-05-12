@@ -361,6 +361,16 @@ button {
   cursor: pointer;
   transition: background-color 0.3s;
 }
+.btun{
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: darkblue;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
 button:hover {
   background-color: #0056b3;
@@ -508,3 +518,17 @@ button:hover {
 
 }
 
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-table th, .product-table td {
+  padding: 8px;
+  /* border: 1px solid #ddd; */
+}
+
+.product-table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}

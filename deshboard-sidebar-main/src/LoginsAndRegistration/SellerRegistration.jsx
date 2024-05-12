@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
 import reg from '../components/reg.jpg';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function SellerRegistration() {
     let navigate = useNavigate();
@@ -32,6 +32,20 @@ export default function SellerRegistration() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+
+        // Validate all fields
+    if (!userName || !address || !email || !mobile || !role || !description || !sellerIcon || !password || !cpassword) {
+        window.alert("Please fill out all fields");
+        return;
+    }
+
+    // Validate email format
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        window.alert("Please enter a valid email address");
+        return;
+    }
+
         // Check if password and confirm password match
         if (password !== cpassword) {
             window.alert("Passwords do not match");
@@ -62,6 +76,7 @@ export default function SellerRegistration() {
             console.error("Registration failed", error);
         }
     };
+
 
     return (
         <div>
@@ -114,7 +129,7 @@ export default function SellerRegistration() {
                                 </tr>
                                 <tr>
                                     <td><button type="submit">Register</button></td>
-                                    <td><button type="button">Cancel</button></td>
+                                    <td><Link to={"/"} type="button" className='btun'>Cancel</Link></td>
                                 </tr>
                             </tbody>
                         </table>

@@ -10,6 +10,7 @@ export default function CustomerLogin() {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');  
+    const [cus_id, setcus_id] = useState('');
     
 
     const handleLogin = async (e) => {
@@ -18,6 +19,7 @@ export default function CustomerLogin() {
             const response = await axios.post("http://localhost:8080/customerlogin", { userName, password });
             if (response.status === 200) {
                 sessionStorage.setItem('userName', userName);
+                sessionStorage.setItem('cus_id', cus_id);
                 navigate("/cx-seller");
                 // Login successful, handle redirection or other actions
             }

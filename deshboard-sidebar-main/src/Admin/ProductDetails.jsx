@@ -60,7 +60,8 @@ export default function ProductDetails() {
                                 <th scope="col">ID</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Author</th>
+                                {/* <th scope="col">Seller ID</th>
+                                <th scope="col">Author</th> */}
                                 <th scope="col">Description</th>
                                 <th scope="col">Starting Price </th>
                                 <th scope="col" colSpan={2}>Action</th>
@@ -73,7 +74,8 @@ export default function ProductDetails() {
                                         <td>{inventory.pro_id}</td>
                                         <td><img src={`data:image/jpeg;base64,${inventory.image}`} alt="Product" /></td>
                                         <td>{inventory.pro_name}</td>
-                                        <td>{inventory.author}</td>
+                                        {/* <td>{inventory.seller.seller_id}</td>
+                                        <td>{inventory.seller.userName}</td> */}
                                         <td>{inventory.description}</td>
                                         <td>{inventory.startingPrice}</td>
                                         <td><button onClick={() => setSelectedProductId(inventory.pro_id)}>Update</button></td>

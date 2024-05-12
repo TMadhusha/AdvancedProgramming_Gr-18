@@ -11,13 +11,13 @@ export default function AdminLogin() {
     const [error, setError] = useState('');  
     
 
-    const handleLogin = async (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post("http://localhost:8080/adminlogin", { userName, password });
             if (response.status === 200) {
                 sessionStorage.setItem('userName', userName);
-                navigate("/bids");
+                navigate("/allbids");
                 // Login successful, handle redirection or other actions
             }
         } catch (error) {
@@ -25,6 +25,11 @@ export default function AdminLogin() {
             console.log('Invalid username or password',error);
         }
     };
+
+    const onCancel=()=>{
+        setUserName('');
+        setPassword('');
+    }
   return (
     <div>
         <div>
@@ -36,7 +41,7 @@ export default function AdminLogin() {
         <div className='container'>
             <div>
                 {error && <p>{error}</p>}
-                    <form onSubmit={handleLogin}>
+                    <form onSubmit={(e) => onSubmit(e)}>
                         <table>
                             <tr>
                                 <th>Username</th>
@@ -52,7 +57,7 @@ export default function AdminLogin() {
                             </tr>
                             <tr>
                                 <td><button style={{width:"100px",marginLeft:"40px"}} type='submit'>LogIn</button></td>
-                                <td><button style={{marginLeft:"0"}}>Cancel</button></td>
+                                <td><button style={{marginLeft:"0"}} onClick={onCancel}>Cancel</button></td>
                             </tr>
                         </table>
                     </form>

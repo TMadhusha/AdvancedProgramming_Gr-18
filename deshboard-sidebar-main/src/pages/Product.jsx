@@ -16,31 +16,33 @@ export default function Product() {
 
     return (
         <div>
-            <div>
-                <Sidebar />
-            </div>
+            <Sidebar />
             <div className="main-content">
                 <div>
                     <h1>Product Details</h1>
                 </div>
-                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                    {
-                        inventory.map((item, index) => (
-                            <div key={index} className="thumbnail">
-                                <div>
-                                    <img src={`data:image/jpeg;base64,${item.image}`} alt="Product" />
-                                </div>
-                                <div className="thumbnail-content">
-                                    <h3>{item.name}</h3>
-                                    <p>Author: {item.author}</p>
-                                    <p>Description: {item.description}</p>
-                                    <p>Starting Price: {item.startingPrice}</p>
-                                  
-                                </div>
-                            </div>
-                        ))
-                    }
-                </div>
+                <table className="product-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Author</th>
+                            <th>Description</th>
+                            <th>Starting Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {inventory.map((item, index) => (
+                            <tr key={index}>
+                                <td><img src={`data:image/jpeg;base64,${item.image}`} alt="Product" /></td>
+                                <td>{item.pro_name}</td>
+                                <td>{item.author}</td>
+                                <td>{item.description}</td>
+                                <td>{item.startingPrice}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
         </div>
     );

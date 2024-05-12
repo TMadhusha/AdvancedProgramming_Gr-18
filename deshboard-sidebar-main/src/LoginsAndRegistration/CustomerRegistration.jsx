@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import reg from '../components/reg.jpg';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function CustomerRegistration() {
     let navigate=useNavigate();
@@ -22,6 +22,19 @@ export default function CustomerRegistration() {
 
     const onSubmit= async(e) => {
         e.preventDefault();
+        
+        if (!userName || !address || !email || !mobile || !role || !password || !cpassword) {
+            window.alert("Please fill out all fields");
+            return;
+        }
+
+        // Validate email format
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        window.alert("Please enter a valid email address");
+        return;
+    }
+
         // Check if password and confirm password match
         if (password !== cpassword) {
             window.alert("Passwords do not match");
@@ -87,7 +100,7 @@ export default function CustomerRegistration() {
                         </tr>
                         <tr>
                             <td><button type='submit'>Register</button></td>
-                            <td><button>Cancel</button></td>
+                            <td><Link to={"/"} className='btun'>Cancel</Link></td>
                         </tr>
                     </table>
                 </form>

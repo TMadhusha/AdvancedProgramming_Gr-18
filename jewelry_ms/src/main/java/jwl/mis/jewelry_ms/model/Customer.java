@@ -4,8 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 public class Customer {
@@ -13,19 +11,20 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cus_id;
     private String userName;
-
     private String password;
     private String email;
     private String address;
     private String mobile;
     private String role;
 
-    public Long getCus_id() {
-        return cus_id;
-    }
+
 
     public void setCus_id(Long cus_id) {
         this.cus_id = cus_id;
+    }
+
+    public Long getCus_id() {
+        return cus_id;
     }
 
     public String getUserName() {

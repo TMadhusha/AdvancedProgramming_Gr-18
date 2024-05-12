@@ -29,13 +29,14 @@ public class InventoryController {
 
     //add products to inventory
     @PostMapping("/inventory")
-    Inventory newInventory(@RequestParam("image") MultipartFile image, @RequestParam("pro_id") String pro_id, @RequestParam("pro_name") String pro_name, @RequestParam("description") String description, @RequestParam("author") String author, @RequestParam("startingPrice") String startingPrice) {
+    Inventory newInventory(@RequestParam("image") MultipartFile image, @RequestParam("pro_id") String pro_id, @RequestParam("pro_name") String pro_name, @RequestParam("description") String description, @RequestParam("seller_id") Long seller_id,  @RequestParam("startingPrice") String startingPrice) {
         try {
             Inventory newInventory = new Inventory();
             newInventory.setPro_id(pro_id);
             newInventory.setPro_name(pro_name);
             newInventory.setDescription(description);
-            newInventory.setAuthor(author);
+            newInventory.setSeller(sellerRepository.findById(seller_id).orElse(null));
+            //newInventory.setAuthor(author);
             newInventory.setStartingPrice(Double.parseDouble(startingPrice));
             newInventory.setImage(image.getBytes()); // Store image data in byte array or BLOB field
             return inventoryRepository.save(newInventory);
@@ -97,6 +98,15 @@ public class InventoryController {
         inventoryRepository.deleteById(pro_id);
         return "Product with ID "+pro_id+ " has been deleted successfully";
     }
+
+    @GetMapping("/inventory/seller")
+    public List<Inventory> getInventoryBySellerId(@RequestParam Long seller_id) {
+        List<Inventory> inventoryList = inventoryRepository.findBySellerId(seller_id);
+        if(inventoryList.isEmpty()) {
+            throw new InventoryNotFoundException("No products found for seller with ID: " + seller_id);
+        }
+        return inventoryList;
+}
 
 }
 
