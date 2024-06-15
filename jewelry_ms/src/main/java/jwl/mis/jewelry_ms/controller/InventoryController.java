@@ -29,7 +29,12 @@ public class InventoryController {
 
     //add products to inventory
     @PostMapping("/inventory")
-    Inventory newInventory(@RequestParam("image") MultipartFile image, @RequestParam("pro_id") String pro_id, @RequestParam("pro_name") String pro_name, @RequestParam("description") String description, @RequestParam("seller_id") Long seller_id,  @RequestParam("startingPrice") String startingPrice) {
+    Inventory newInventory(@RequestParam("image") MultipartFile image,
+                           @RequestParam("pro_id") String pro_id,
+                           @RequestParam("pro_name") String pro_name,
+                           @RequestParam("description") String description,
+                           @RequestParam("seller_id") Long seller_id,
+                           @RequestParam("startingPrice") String startingPrice) {
         try {
             Inventory newInventory = new Inventory();
             newInventory.setPro_id(pro_id);
