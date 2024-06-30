@@ -110,6 +110,7 @@ public class SellerController {
 
   }
 
+
   //delete seller using seller id
   @DeleteMapping("/seller/{seller_id}")
     String deleteCustomer(@PathVariable Long seller_id){
